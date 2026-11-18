@@ -1,0 +1,14 @@
+# Entorno virtual
+venv/
+__pycache__/
+.DS_Store
+
+# Datos pesados (quedan en el computador de captura)
+fotos/
+dataset_naranjas/
+*.zip
+runs/
+
+# Pesos base que YOLO descarga solo
+yolo26n-seg.pt
+best_anterior.pt

@@ -1,0 +1,548 @@
+Configuración cargada: escala = 0.2916 mm/px, zona = [551, 134, 1400, 1007]
+naranja_0000.jpg: color 3 frutas, YOLO 3 frutas
+    (1016, 198)  color  52.8 mm chico    | YOLO  54.1 mm chico   
+    ( 941, 457)  color  61.1 mm mediano  | YOLO  62.2 mm mediano 
+    ( 914, 760)  color  66.3 mm grande   | YOLO  67.0 mm grande  
+naranja_0001.jpg: color 3 frutas, YOLO 3 frutas
+    (1016, 199)  color  53.5 mm chico    | YOLO  54.1 mm chico   
+    ( 941, 457)  color  61.0 mm mediano  | YOLO  62.2 mm mediano 
+    ( 915, 760)  color  66.3 mm grande   | YOLO  67.0 mm grande  
+naranja_0002.jpg: color 3 frutas, YOLO 3 frutas
+    (1016, 198)  color  52.9 mm chico    | YOLO  54.1 mm chico   
+    ( 941, 457)  color  61.0 mm mediano  | YOLO  62.1 mm mediano 
+    ( 915, 760)  color  66.3 mm grande   | YOLO  67.1 mm grande  
+naranja_0003.jpg: color 3 frutas, YOLO 3 frutas
+    (1016, 199)  color  53.3 mm chico    | YOLO  54.0 mm chico   
+    ( 941, 457)  color  61.0 mm mediano  | YOLO  62.2 mm mediano 
+    ( 915, 760)  color  66.2 mm grande   | YOLO  67.0 mm grande  
+naranja_0004.jpg: color 3 frutas, YOLO 3 frutas
+    (1016, 199)  color  53.3 mm chico    | YOLO  54.1 mm chico   
+    ( 941, 457)  color  61.0 mm mediano  | YOLO  62.1 mm mediano 
+    ( 915, 760)  color  66.1 mm grande   | YOLO  67.1 mm grande  
+naranja_0005.jpg: color 3 frutas, YOLO 3 frutas
+    (1016, 200)  color  54.8 mm chico    | YOLO  54.0 mm chico   
+    ( 940, 457)  color  61.1 mm mediano  | YOLO  62.1 mm mediano 
+    ( 914, 760)  color  66.3 mm grande   | YOLO  67.1 mm grande  
+naranja_0006.jpg: color 3 frutas, YOLO 3 frutas
+    (1016, 200)  color  54.5 mm chico    | YOLO  54.0 mm chico   
+    ( 940, 457)  color  61.1 mm mediano  | YOLO  62.1 mm mediano 
+    ( 913, 760)  color  66.3 mm grande   | YOLO  67.2 mm grande  
+naranja_0007.jpg: color 3 frutas, YOLO 3 frutas
+    (1016, 200)  color  54.7 mm chico    | YOLO  54.0 mm chico   
+    ( 940, 458)  color  61.4 mm mediano  | YOLO  62.1 mm mediano 
+    ( 913, 760)  color  66.3 mm grande   | YOLO  67.2 mm grande  
+naranja_0008.jpg: color 3 frutas, YOLO 3 frutas
+    (1016, 200)  color  54.5 mm chico    | YOLO  54.0 mm chico   
+    ( 940, 457)  color  61.3 mm mediano  | YOLO  62.0 mm mediano 
+    ( 913, 760)  color  66.3 mm grande   | YOLO  67.2 mm grande  
+naranja_0009.jpg: color 3 frutas, YOLO 3 frutas
+    (1016, 200)  color  54.8 mm chico    | YOLO  54.0 mm chico   
+    ( 940, 457)  color  61.4 mm mediano  | YOLO  62.1 mm mediano 
+    ( 914, 760)  color  66.3 mm grande   | YOLO  67.2 mm grande  
+naranja_0010.jpg: color 3 frutas, YOLO 3 frutas
+    ( 710, 485)  color  65.6 mm grande   | YOLO  66.7 mm grande  
+    ( 995, 490)  color  60.3 mm mediano  | YOLO  61.0 mm mediano 
+    (1268, 518)  color  52.6 mm chico    | YOLO  53.6 mm chico   
+naranja_0011.jpg: color 3 frutas, YOLO 3 frutas
+    ( 710, 485)  color  65.6 mm grande   | YOLO  66.7 mm grande  
+    ( 995, 490)  color  60.3 mm mediano  | YOLO  61.0 mm mediano 
+    (1268, 518)  color  52.5 mm chico    | YOLO  53.6 mm chico   
+naranja_0012.jpg: color 3 frutas, YOLO 3 frutas
+    ( 710, 485)  color  65.7 mm grande   | YOLO  66.8 mm grande  
+    ( 995, 490)  color  60.4 mm mediano  | YOLO  60.9 mm mediano 
+    (1268, 518)  color  52.5 mm chico    | YOLO  53.6 mm chico   
+naranja_0013.jpg: color 3 frutas, YOLO 3 frutas
+    ( 710, 485)  color  65.7 mm grande   | YOLO  66.7 mm grande  
+    ( 995, 490)  color  60.3 mm mediano  | YOLO  61.0 mm mediano 
+    (1268, 518)  color  52.4 mm chico    | YOLO  53.6 mm chico   
+naranja_0014.jpg: color 4 frutas, YOLO 4 frutas
+    ( 969, 356)  color  61.7 mm mediano  | YOLO  62.2 mm mediano 
+    ( 729, 513)  color  65.7 mm grande   | YOLO  66.8 mm grande  
+    (1218, 542)  color  52.9 mm chico    | YOLO  53.8 mm chico   
+    ( 945, 724)  color  66.6 mm grande   | YOLO  67.1 mm grande  
+naranja_0015.jpg: color 4 frutas, YOLO 4 frutas
+    ( 969, 357)  color  61.8 mm mediano  | YOLO  62.1 mm mediano 
+    ( 729, 513)  color  65.7 mm grande   | YOLO  66.8 mm grande  
+    (1218, 542)  color  52.9 mm chico    | YOLO  53.8 mm chico   
+    ( 945, 724)  color  66.5 mm grande   | YOLO  67.2 mm grande  
+naranja_0016.jpg: color 4 frutas, YOLO 4 frutas
+    ( 969, 357)  color  61.6 mm mediano  | YOLO  62.1 mm mediano 
+    ( 728, 513)  color  66.0 mm grande   | YOLO  66.7 mm grande  
+    (1217, 542)  color  52.8 mm chico    | YOLO  53.8 mm chico   
+    ( 945, 724)  color  66.5 mm grande   | YOLO  67.2 mm grande  
+naranja_0017.jpg: color 4 frutas, YOLO 4 frutas
+    ( 976, 475)  color  63.1 mm mediano  | YOLO  62.5 mm mediano 
+    ( 776, 562)  color  66.9 mm grande   | YOLO  67.5 mm grande  
+    (1137, 594)  color  53.4 mm chico    | YOLO  53.9 mm chico   
+    ( 961, 712)  color  68.0 mm grande   | YOLO  67.9 mm grande  
+naranja_0018.jpg: color 4 frutas, YOLO 4 frutas
+    ( 976, 475)  color  63.1 mm mediano  | YOLO  62.6 mm mediano 
+    ( 776, 562)  color  66.9 mm grande   | YOLO  67.6 mm grande  
+    (1136, 594)  color  53.5 mm chico    | YOLO  53.9 mm chico   
+    ( 961, 712)  color  68.3 mm grande   | YOLO  67.9 mm grande  
+naranja_0019.jpg: color 4 frutas, YOLO 4 frutas
+    ( 976, 475)  color  63.0 mm mediano  | YOLO  62.6 mm mediano 
+    ( 776, 562)  color  66.9 mm grande   | YOLO  67.5 mm grande  
+    (1137, 594)  color  53.4 mm chico    | YOLO  53.9 mm chico   
+    ( 961, 712)  color  68.2 mm grande   | YOLO  67.9 mm grande  
+naranja_0020.jpg: color 4 frutas, YOLO 4 frutas
+    (1240, 270)  color  61.7 mm mediano  | YOLO  62.5 mm mediano 
+    ( 696, 280)  color  65.5 mm grande   | YOLO  66.6 mm grande  
+    ( 703, 803)  color  67.4 mm grande   | YOLO  68.0 mm grande  
+    (1260, 831)  color  54.3 mm chico    | YOLO  55.2 mm chico   
+naranja_0021.jpg: color 4 frutas, YOLO 4 frutas
+    (1240, 270)  color  61.7 mm mediano  | YOLO  62.6 mm mediano 
+    ( 696, 280)  color  65.6 mm grande   | YOLO  66.5 mm grande  
+    ( 703, 803)  color  67.2 mm grande   | YOLO  67.9 mm grande  
+    (1260, 831)  color  54.3 mm chico    | YOLO  55.2 mm chico   
+naranja_0022.jpg: color 4 frutas, YOLO 4 frutas
+    (1241, 270)  color  61.7 mm mediano  | YOLO  62.6 mm mediano 
+    ( 697, 278)  color  65.5 mm grande   | YOLO  66.5 mm grande  
+    ( 703, 803)  color  67.2 mm grande   | YOLO  67.9 mm grande  
+    (1260, 831)  color  54.3 mm chico    | YOLO  55.2 mm chico   
+naranja_0023.jpg: color 4 frutas, YOLO 4 frutas
+    (1240, 270)  color  61.7 mm mediano  | YOLO  62.6 mm mediano 
+    ( 838, 332)  color  66.7 mm grande   | YOLO  67.5 mm grande  
+    ( 703, 734)  color  68.8 mm grande   | YOLO  69.9 mm grande  
+    (1208, 794)  color  55.3 mm chico    | YOLO  56.7 mm chico   
+naranja_0024.jpg: color 4 frutas, YOLO 4 frutas
+    (1240, 271)  color  61.9 mm mediano  | YOLO  62.5 mm mediano 
+    ( 839, 332)  color  66.6 mm grande   | YOLO  67.4 mm grande  
+    ( 703, 733)  color  68.9 mm grande   | YOLO  69.7 mm grande  
+    (1208, 794)  color  55.1 mm chico    | YOLO  56.6 mm chico   
+naranja_0025.jpg: color 4 frutas, YOLO 4 frutas
+    (1240, 270)  color  61.8 mm mediano  | YOLO  62.5 mm mediano 
+    ( 839, 332)  color  66.9 mm grande   | YOLO  67.5 mm grande  
+    ( 703, 734)  color  68.8 mm grande   | YOLO  69.7 mm grande  
+    (1208, 794)  color  55.2 mm chico    | YOLO  56.5 mm chico   
+naranja_0026.jpg: color 4 frutas, YOLO 4 frutas
+    (1241, 270)  color  61.9 mm mediano  | YOLO  62.6 mm mediano 
+    ( 839, 330)  color  66.7 mm grande   | YOLO  67.5 mm grande  
+    ( 702, 734)  color  69.1 mm grande   | YOLO  69.7 mm grande  
+    (1208, 794)  color  55.2 mm chico    | YOLO  56.1 mm chico   
+naranja_0027.jpg: color 6 frutas, YOLO 6 frutas
+    (1188, 313)  color  64.4 mm mediano  | YOLO  65.3 mm grande     <-- distinta categoría
+    ( 709, 363)  color  66.3 mm grande   | YOLO  67.0 mm grande  
+    ( 954, 482)  color  59.8 mm mediano  | YOLO  60.4 mm mediano 
+    (1239, 655)  color  52.2 mm chico    | YOLO  53.2 mm chico   
+    ( 724, 713)  color  69.2 mm grande   | YOLO  70.5 mm grande  
+    (1008, 738)  color  61.9 mm mediano  | YOLO  63.0 mm mediano 
+naranja_0028.jpg: color 7 frutas, YOLO 7 frutas
+    (1052, 285)  color  65.2 mm grande   | YOLO  65.5 mm grande  
+    ( 709, 361)  color  66.4 mm grande   | YOLO  67.0 mm grande  
+    (1219, 427)  color  60.9 mm mediano  | YOLO  61.2 mm mediano 
+    ( 953, 484)  color  60.3 mm mediano  | YOLO  60.9 mm mediano 
+    (1238, 655)  color  52.3 mm chico    | YOLO  53.3 mm chico   
+    ( 723, 712)  color  69.2 mm grande   | YOLO  70.7 mm grande  
+    (1007, 737)  color  62.0 mm mediano  | YOLO  62.9 mm mediano 
+naranja_0029.jpg: color 7 frutas, YOLO 7 frutas
+    (1052, 285)  color  65.1 mm grande   | YOLO  65.6 mm grande  
+    ( 709, 359)  color  66.7 mm grande   | YOLO  67.1 mm grande  
+    (1219, 428)  color  60.9 mm mediano  | YOLO  61.2 mm mediano 
+    ( 953, 484)  color  60.2 mm mediano  | YOLO  60.8 mm mediano 
+    (1238, 655)  color  52.1 mm chico    | YOLO  53.2 mm chico   
+    ( 724, 712)  color  69.2 mm grande   | YOLO  70.4 mm grande  
+    (1007, 738)  color  61.9 mm mediano  | YOLO  62.9 mm mediano 
+naranja_0030.jpg: color 7 frutas, YOLO 7 frutas
+    (1052, 285)  color  65.1 mm grande   | YOLO  65.6 mm grande  
+    ( 709, 363)  color  66.4 mm grande   | YOLO  67.0 mm grande  
+    (1220, 427)  color  60.9 mm mediano  | YOLO  61.1 mm mediano 
+    ( 954, 484)  color  60.3 mm mediano  | YOLO  60.8 mm mediano 
+    (1239, 655)  color  52.1 mm chico    | YOLO  53.2 mm chico   
+    ( 723, 712)  color  69.2 mm grande   | YOLO  70.5 mm grande  
+    (1007, 738)  color  62.0 mm mediano  | YOLO  62.9 mm mediano 
+naranja_0031.jpg: color 1 frutas, YOLO 1 frutas
+    ( 952, 569)  color  62.2 mm mediano  | YOLO  62.8 mm mediano 
+naranja_0032.jpg: color 2 frutas, YOLO 2 frutas
+    ( 953, 570)  color  62.9 mm mediano  | YOLO  62.8 mm mediano 
+    (1208, 808)  color  60.9 mm mediano  | YOLO  62.1 mm mediano 
+naranja_0033.jpg: color 2 frutas, YOLO 2 frutas
+    ( 952, 571)  color  63.3 mm mediano  | YOLO  62.9 mm mediano 
+    (1209, 809)  color  61.1 mm mediano  | YOLO  62.0 mm mediano 
+naranja_0034.jpg: color 3 frutas, YOLO 3 frutas
+    ( 703, 339)  color  53.7 mm chico    | YOLO  54.4 mm chico   
+    ( 953, 570)  color  62.2 mm mediano  | YOLO  62.6 mm mediano 
+    (1209, 809)  color  61.4 mm mediano  | YOLO  61.9 mm mediano 
+naranja_0035.jpg: color 4 frutas, YOLO 4 frutas
+    (1216, 280)  color  63.6 mm mediano  | YOLO  64.2 mm mediano 
+    ( 704, 339)  color  53.6 mm chico    | YOLO  54.4 mm chico   
+    ( 953, 570)  color  62.1 mm mediano  | YOLO  62.6 mm mediano 
+    (1209, 809)  color  61.4 mm mediano  | YOLO  61.9 mm mediano 
+naranja_0036.jpg: color 4 frutas, YOLO 4 frutas
+    (1215, 282)  color  63.6 mm mediano  | YOLO  64.3 mm mediano 
+    ( 704, 339)  color  53.5 mm chico    | YOLO  54.5 mm chico   
+    ( 950, 569)  color  62.0 mm mediano  | YOLO  62.8 mm mediano 
+    (1209, 809)  color  61.2 mm mediano  | YOLO  61.7 mm mediano 
+naranja_0037.jpg: color 4 frutas, YOLO 4 frutas
+    (1215, 282)  color  63.6 mm mediano  | YOLO  64.3 mm mediano 
+    ( 704, 339)  color  53.5 mm chico    | YOLO  54.5 mm chico   
+    ( 951, 569)  color  62.0 mm mediano  | YOLO  62.6 mm mediano 
+    (1210, 808)  color  61.3 mm mediano  | YOLO  61.7 mm mediano 
+naranja_0038.jpg: color 5 frutas, YOLO 5 frutas
+    ( 928, 252)  color  61.2 mm mediano  | YOLO  61.8 mm mediano 
+    (1215, 283)  color  63.7 mm mediano  | YOLO  64.3 mm mediano 
+    ( 704, 339)  color  53.6 mm chico    | YOLO  54.5 mm chico   
+    ( 950, 569)  color  62.0 mm mediano  | YOLO  62.7 mm mediano 
+    (1209, 808)  color  61.5 mm mediano  | YOLO  61.7 mm mediano 
+naranja_0039.jpg: color 5 frutas, YOLO 5 frutas
+    ( 956, 273)  color  61.6 mm mediano  | YOLO  62.4 mm mediano 
+    (1215, 282)  color  63.5 mm mediano  | YOLO  64.4 mm mediano 
+    ( 704, 339)  color  53.5 mm chico    | YOLO  54.4 mm chico   
+    ( 950, 569)  color  62.0 mm mediano  | YOLO  62.8 mm mediano 
+    (1209, 808)  color  61.4 mm mediano  | YOLO  61.7 mm mediano 
+naranja_0040.jpg: color 5 frutas, YOLO 6 frutas
+    ( 951, 273)  color  61.4 mm mediano  | YOLO  62.2 mm mediano 
+    (1215, 282)  color  63.7 mm mediano  | YOLO  64.3 mm mediano 
+    ( 704, 340)  color  54.0 mm chico    | YOLO  54.6 mm chico   
+    ( 950, 569)  color  62.1 mm mediano  | YOLO  62.7 mm mediano 
+    (1208, 809)  color  62.1 mm mediano  | YOLO  62.0 mm mediano 
+naranja_0041.jpg: color 6 frutas, YOLO 6 frutas
+    ( 951, 273)  color  61.4 mm mediano  | YOLO  62.2 mm mediano 
+    (1215, 282)  color  63.7 mm mediano  | YOLO  64.3 mm mediano 
+    ( 704, 341)  color  54.1 mm chico    | YOLO  54.6 mm chico   
+    ( 950, 569)  color  61.9 mm mediano  | YOLO  62.6 mm mediano 
+    ( 744, 787)  color  68.1 mm grande   | YOLO  89.1 mm grande  
+    (1208, 809)  color  62.2 mm mediano  | YOLO  61.9 mm mediano 
+naranja_0042.jpg: color 5 frutas, YOLO 5 frutas
+    ( 951, 274)  color  61.3 mm mediano  | YOLO  62.2 mm mediano 
+    (1215, 283)  color  63.6 mm mediano  | YOLO  64.3 mm mediano 
+    ( 703, 340)  color  53.4 mm chico    | YOLO  54.6 mm chico   
+    ( 950, 569)  color  61.7 mm mediano  | YOLO  62.6 mm mediano 
+    (1208, 809)  color  62.2 mm mediano  | YOLO  62.0 mm mediano 
+naranja_0043.jpg: color 3 frutas, YOLO 3 frutas
+    ( 951, 273)  color  61.6 mm mediano  | YOLO  62.5 mm mediano 
+    (1214, 283)  color  63.7 mm mediano  | YOLO  64.5 mm mediano 
+    ( 704, 339)  color  53.6 mm chico    | YOLO  54.5 mm chico   
+naranja_0044.jpg: color 3 frutas, YOLO 3 frutas
+    ( 991, 532)  color  60.9 mm mediano  | YOLO  61.1 mm mediano 
+    (1249, 543)  color  63.8 mm mediano  | YOLO  65.1 mm grande     <-- distinta categoría
+    ( 678, 554)  color  52.7 mm chico    | YOLO  53.5 mm chico   
+naranja_0045.jpg: color 1 frutas, YOLO 1 frutas
+    ( 732, 814)  color  53.5 mm chico    | YOLO  54.1 mm chico   
+naranja_0046.jpg: color 3 frutas, YOLO 3 frutas
+    (1180, 514)  color  67.1 mm grande   | YOLO  67.6 mm grande  
+    ( 752, 633)  color  66.3 mm grande   | YOLO  63.3 mm mediano    <-- distinta categoría
+    ( 725, 836)  color  60.7 mm mediano  | YOLO  61.6 mm mediano 
+naranja_0047.jpg: color 3 frutas, YOLO 3 frutas
+    (1181, 518)  color  67.1 mm grande   | YOLO  67.4 mm grande  
+    ( 749, 630)  color  64.0 mm mediano  | YOLO  63.1 mm mediano 
+    ( 725, 837)  color  60.6 mm mediano  | YOLO  61.7 mm mediano 
+naranja_0048.jpg: color 3 frutas, YOLO 3 frutas
+    ( 700, 344)  color  62.1 mm mediano  | YOLO  62.7 mm mediano 
+    (1005, 513)  color  62.7 mm mediano  | YOLO  63.1 mm mediano 
+    ( 726, 839)  color  60.7 mm mediano  | YOLO  61.6 mm mediano 
+naranja_0049.jpg: color 3 frutas, YOLO 3 frutas
+    ( 755, 373)  color  53.2 mm chico    | YOLO  53.8 mm chico   
+    ( 842, 750)  color  60.4 mm mediano  | YOLO  60.8 mm mediano 
+    (1152, 802)  color  65.4 mm grande   | YOLO  66.0 mm grande  
+naranja_0050.jpg: color 2 frutas, YOLO 2 frutas
+    ( 755, 373)  color  53.2 mm chico    | YOLO  54.0 mm chico   
+    ( 842, 750)  color  60.3 mm mediano  | YOLO  60.7 mm mediano 
+naranja_0051.jpg: color 2 frutas, YOLO 2 frutas
+    ( 973, 287)  color  64.4 mm mediano  | YOLO  65.0 mm mediano 
+    ( 968, 538)  color  58.6 mm mediano  | YOLO  54.6 mm chico      <-- distinta categoría
+naranja_0052.jpg: color 2 frutas, YOLO 2 frutas
+    ( 924, 342)  color  70.6 mm grande   | YOLO  69.3 mm grande  
+    ( 951, 601)  color  71.1 mm grande   | YOLO  62.3 mm mediano    <-- distinta categoría
+naranja_0053.jpg: color 2 frutas, YOLO 2 frutas
+    ( 744, 606)  color  60.5 mm mediano  | YOLO  61.6 mm mediano 
+    (1088, 626)  color  62.5 mm mediano  | YOLO  62.4 mm mediano 
+naranja_0054.jpg: color 5 frutas, YOLO 5 frutas
+    (1193, 305)  color  69.2 mm grande   | YOLO  69.9 mm grande  
+    ( 843, 316)  color  65.9 mm grande   | YOLO  66.4 mm grande  
+    ( 913, 576)  color  64.9 mm mediano  | YOLO  65.7 mm grande     <-- distinta categoría
+    (1227, 607)  color  61.4 mm mediano  | YOLO  62.2 mm mediano 
+    ( 700, 634)  color  61.1 mm mediano  | YOLO  61.8 mm mediano 
+naranja_0055.jpg: color 2 frutas, YOLO 2 frutas
+    (1195, 302)  color  69.3 mm grande   | YOLO  70.0 mm grande  
+    ( 845, 312)  color  66.0 mm grande   | YOLO  66.4 mm grande  
+naranja_0056.jpg: color 2 frutas, YOLO 2 frutas
+    (1137, 594)  color  68.3 mm grande   | YOLO  69.2 mm grande  
+    ( 800, 609)  color  65.6 mm grande   | YOLO  66.2 mm grande  
+naranja_0057.jpg: color 0 frutas, YOLO 0 frutas
+naranja_0058.jpg: color 2 frutas, YOLO 2 frutas
+    ( 756, 815)  color  69.1 mm grande   | YOLO  69.9 mm grande  
+    (1144, 800)  color  52.6 mm chico    | YOLO  53.8 mm chico   
+naranja_0059.jpg: color 2 frutas, YOLO 2 frutas
+    ( 774, 537)  color  69.1 mm grande   | YOLO  69.8 mm grande  
+    (1152, 558)  color  52.8 mm chico    | YOLO  53.6 mm chico   
+naranja_0060.jpg: color 2 frutas, YOLO 2 frutas
+    ( 787, 336)  color  69.2 mm grande   | YOLO  69.8 mm grande  
+    (1157, 377)  color  53.0 mm chico    | YOLO  53.5 mm chico   
+naranja_0061.jpg: color 2 frutas, YOLO 2 frutas
+    ( 972, 352)  color  52.7 mm chico    | YOLO  53.5 mm chico   
+    ( 983, 715)  color  68.9 mm grande   | YOLO  69.6 mm grande  
+naranja_0062.jpg: color 3 frutas, YOLO 3 frutas
+    ( 973, 351)  color  52.8 mm chico    | YOLO  53.7 mm chico   
+    ( 735, 477)  color  60.9 mm mediano  | YOLO  61.9 mm mediano 
+    ( 983, 713)  color  69.0 mm grande   | YOLO  69.9 mm grande  
+naranja_0063.jpg: color 4 frutas, YOLO 4 frutas
+    ( 973, 351)  color  52.9 mm chico    | YOLO  53.7 mm chico   
+    ( 738, 476)  color  61.0 mm mediano  | YOLO  61.7 mm mediano 
+    (1177, 512)  color  61.9 mm mediano  | YOLO  62.6 mm mediano 
+    ( 983, 714)  color  69.4 mm grande   | YOLO  69.6 mm grande  
+naranja_0064.jpg: color 5 frutas, YOLO 5 frutas
+    ( 974, 350)  color  52.7 mm chico    | YOLO  53.6 mm chico   
+    ( 738, 476)  color  60.6 mm mediano  | YOLO  61.5 mm mediano 
+    (1176, 512)  color  62.0 mm mediano  | YOLO  62.5 mm mediano 
+    (1005, 702)  color  70.4 mm grande   | YOLO  70.4 mm grande  
+    ( 777, 779)  color  66.0 mm grande   | YOLO  66.7 mm grande  
+naranja_0065.jpg: color 6 frutas, YOLO 6 frutas
+    ( 974, 349)  color  52.8 mm chico    | YOLO  53.6 mm chico   
+    ( 738, 476)  color  60.7 mm mediano  | YOLO  61.4 mm mediano 
+    (1176, 514)  color  62.3 mm mediano  | YOLO  62.5 mm mediano 
+    (1011, 700)  color  73.3 mm grande   | YOLO  71.4 mm grande  
+    ( 777, 779)  color  66.0 mm grande   | YOLO  66.6 mm grande  
+    (1222, 804)  color  67.4 mm grande   | YOLO  67.8 mm grande  
+naranja_0066.jpg: color 5 frutas, YOLO 6 frutas
+    ( 974, 349)  color  52.8 mm chico    | YOLO  53.4 mm chico   
+    ( 738, 476)  color  61.0 mm mediano  | YOLO  61.4 mm mediano 
+    (1189, 495)  color  61.8 mm mediano  | YOLO  63.0 mm mediano 
+    ( 755, 753)  color  65.2 mm grande   | YOLO  66.8 mm grande  
+    (1223, 805)  color  67.0 mm grande   | YOLO  68.0 mm grande  
+naranja_0067.jpg: color 6 frutas, YOLO 6 frutas
+    ( 975, 329)  color  53.3 mm chico    | YOLO  53.5 mm chico   
+    (1203, 459)  color  62.4 mm mediano  | YOLO  62.9 mm mediano 
+    ( 738, 476)  color  60.6 mm mediano  | YOLO  62.0 mm mediano 
+    ( 985, 540)  color  69.4 mm grande   | YOLO  80.7 mm grande  
+    ( 755, 753)  color  65.4 mm grande   | YOLO  66.4 mm grande  
+    (1223, 805)  color  66.9 mm grande   | YOLO  67.9 mm grande  
+naranja_0068.jpg: color 7 frutas, YOLO 7 frutas
+    ( 749, 277)  color  61.8 mm mediano  | YOLO  62.1 mm mediano 
+    ( 974, 328)  color  53.6 mm chico    | YOLO  53.7 mm chico   
+    (1202, 471)  color  63.2 mm mediano  | YOLO  63.3 mm mediano 
+    ( 760, 503)  color  61.4 mm mediano  | YOLO  61.6 mm mediano 
+    ( 986, 535)  color  70.6 mm grande   | YOLO  79.4 mm grande  
+    ( 755, 753)  color  65.2 mm grande   | YOLO  66.2 mm grande  
+    (1223, 805)  color  66.7 mm grande   | YOLO  67.7 mm grande  
+naranja_0069.jpg: color 8 frutas, YOLO 8 frutas
+    (1246, 263)  color  63.4 mm mediano  | YOLO  63.9 mm mediano 
+    ( 750, 277)  color  61.8 mm mediano  | YOLO  62.1 mm mediano 
+    ( 974, 328)  color  53.4 mm chico    | YOLO  53.7 mm chico   
+    (1202, 478)  color  62.0 mm mediano  | YOLO  62.5 mm mediano 
+    ( 760, 504)  color  61.3 mm mediano  | YOLO  62.0 mm mediano 
+    ( 987, 538)  color  70.5 mm grande   | YOLO  82.7 mm grande  
+    ( 755, 753)  color  65.3 mm grande   | YOLO  66.2 mm grande  
+    (1223, 805)  color  66.9 mm grande   | YOLO  67.7 mm grande  
+naranja_0070.jpg: color 6 frutas, YOLO 6 frutas
+    (1246, 262)  color  63.5 mm mediano  | YOLO  64.0 mm mediano 
+    ( 749, 277)  color  61.8 mm mediano  | YOLO  62.2 mm mediano 
+    ( 974, 327)  color  53.1 mm chico    | YOLO  53.7 mm chico   
+    (1202, 478)  color  62.2 mm mediano  | YOLO  62.3 mm mediano 
+    ( 760, 503)  color  61.7 mm mediano  | YOLO  61.8 mm mediano 
+    ( 987, 537)  color  70.3 mm grande   | YOLO  81.5 mm grande  
+naranja_0071.jpg: color 5 frutas, YOLO 5 frutas
+    (1203, 298)  color  63.4 mm mediano  | YOLO  64.0 mm mediano 
+    ( 797, 335)  color  61.7 mm mediano  | YOLO  62.1 mm mediano 
+    (1001, 336)  color  55.1 mm chico    | YOLO  54.7 mm chico   
+    (1200, 590)  color  61.8 mm mediano  | YOLO  62.6 mm mediano 
+    ( 768, 675)  color  60.7 mm mediano  | YOLO  61.8 mm mediano 
+naranja_0072.jpg: color 5 frutas, YOLO 5 frutas
+    ( 943, 306)  color  67.6 mm grande   | YOLO  78.0 mm grande  
+    (1162, 365)  color  63.5 mm mediano  | YOLO  64.7 mm mediano 
+    ( 755, 397)  color  53.6 mm chico    | YOLO  53.9 mm chico   
+    ( 680, 615)  color  61.1 mm mediano  | YOLO  61.5 mm mediano 
+    (1076, 699)  color  62.7 mm mediano  | YOLO  79.0 mm grande     <-- distinta categoría
+naranja_0073.jpg: color 1 frutas, YOLO 1 frutas
+    ( 945, 761)  color  52.9 mm chico    | YOLO  53.5 mm chico   
+naranja_0074.jpg: color 1 frutas, YOLO 1 frutas
+    ( 899, 481)  color  53.6 mm chico    | YOLO  54.1 mm chico   
+naranja_0075.jpg: color 1 frutas, YOLO 1 frutas
+    (1034, 301)  color  53.4 mm chico    | YOLO  54.2 mm chico   
+naranja_0076.jpg: color 1 frutas, YOLO 1 frutas
+    (1259, 352)  color  53.4 mm chico    | YOLO  54.3 mm chico   
+naranja_0077.jpg: color 1 frutas, YOLO 1 frutas
+    (1225, 655)  color  53.6 mm chico    | YOLO  54.4 mm chico   
+naranja_0078.jpg: color 0 frutas, YOLO 0 frutas
+naranja_0079.jpg: color 1 frutas, YOLO 1 frutas
+    ( 957, 759)  color  67.0 mm grande   | YOLO  67.4 mm grande  
+naranja_0080.jpg: color 2 frutas, YOLO 2 frutas
+    ( 786, 403)  color  61.9 mm mediano  | YOLO  62.9 mm mediano 
+    ( 962, 751)  color  66.2 mm grande   | YOLO  66.5 mm grande  
+naranja_0081.jpg: color 3 frutas, YOLO 3 frutas
+    (1155, 371)  color  66.6 mm grande   | YOLO  66.7 mm grande  
+    ( 785, 397)  color  61.9 mm mediano  | YOLO  62.7 mm mediano 
+    ( 959, 748)  color  66.0 mm grande   | YOLO  66.6 mm grande  
+naranja_0082.jpg: color 4 frutas, YOLO 4 frutas
+    (1152, 372)  color  66.2 mm grande   | YOLO  66.4 mm grande  
+    ( 785, 398)  color  62.0 mm mediano  | YOLO  62.7 mm mediano 
+    ( 725, 647)  color  61.5 mm mediano  | YOLO  62.4 mm mediano 
+    ( 958, 749)  color  66.3 mm grande   | YOLO  66.8 mm grande  
+naranja_0083.jpg: color 1 frutas, YOLO 1 frutas
+    ( 766, 761)  color  69.8 mm grande   | YOLO  69.9 mm grande  
+naranja_0084.jpg: color 1 frutas, YOLO 1 frutas
+    ( 838, 745)  color  62.2 mm mediano  | YOLO  61.7 mm mediano 
+naranja_0085.jpg: color 3 frutas, YOLO 3 frutas
+    ( 841, 278)  color  69.4 mm grande   | YOLO  70.2 mm grande  
+    (1133, 741)  color  64.9 mm mediano  | YOLO  65.1 mm grande     <-- distinta categoría
+    ( 841, 745)  color  61.6 mm mediano  | YOLO  61.5 mm mediano 
+naranja_0086.jpg: color 4 frutas, YOLO 4 frutas
+    ( 841, 278)  color  69.3 mm grande   | YOLO  70.3 mm grande  
+    (1153, 377)  color  61.6 mm mediano  | YOLO  62.2 mm mediano 
+    (1132, 741)  color  64.6 mm mediano  | YOLO  65.0 mm grande     <-- distinta categoría
+    ( 839, 746)  color  60.6 mm mediano  | YOLO  61.4 mm mediano 
+naranja_0087.jpg: color 5 frutas, YOLO 5 frutas
+    ( 841, 278)  color  69.3 mm grande   | YOLO  70.2 mm grande  
+    (1154, 377)  color  61.6 mm mediano  | YOLO  62.2 mm mediano 
+    ( 755, 536)  color  63.1 mm mediano  | YOLO  61.1 mm mediano 
+    (1132, 741)  color  64.7 mm mediano  | YOLO  64.9 mm mediano 
+    ( 837, 747)  color  61.6 mm mediano  | YOLO  61.1 mm mediano 
+naranja_0088.jpg: color 2 frutas, YOLO 2 frutas
+    ( 841, 277)  color  69.6 mm grande   | YOLO  70.4 mm grande  
+    ( 835, 658)  color  67.4 mm grande   | YOLO  66.1 mm grande  
+naranja_0089.jpg: color 3 frutas, YOLO 3 frutas
+    ( 841, 277)  color  69.5 mm grande   | YOLO  70.4 mm grande  
+    ( 835, 660)  color  68.7 mm grande   | YOLO  66.5 mm grande  
+    (1097, 640)  color  53.8 mm chico    | YOLO  54.5 mm chico   
+naranja_0090.jpg: color 3 frutas, YOLO 3 frutas
+    ( 841, 277)  color  69.4 mm grande   | YOLO  70.4 mm grande  
+    ( 841, 659)  color  72.1 mm grande   | YOLO  66.8 mm grande  
+    (1051, 643)  color  55.0 mm chico    | YOLO  55.2 mm chico   
+naranja_0091.jpg: color 3 frutas, YOLO 3 frutas
+    ( 841, 277)  color  69.5 mm grande   | YOLO  70.3 mm grande  
+    (1080, 492)  color  53.8 mm chico    | YOLO  54.2 mm chico   
+    ( 831, 659)  color  66.3 mm grande   | YOLO  65.9 mm grande  
+naranja_0092.jpg: color 3 frutas, YOLO 4 frutas
+    ( 840, 277)  color  69.5 mm grande   | YOLO  70.3 mm grande  
+    (1080, 492)  color  53.7 mm chico    | YOLO  54.3 mm chico   
+    (1154, 787)  color  60.0 mm mediano  | YOLO  61.1 mm mediano 
+naranja_0093.jpg: color 5 frutas, YOLO 5 frutas
+    ( 840, 277)  color  69.3 mm grande   | YOLO  70.1 mm grande  
+    (1241, 315)  color  62.3 mm mediano  | YOLO  62.8 mm mediano 
+    (1078, 497)  color  53.4 mm chico    | YOLO  54.0 mm chico   
+    ( 828, 662)  color  66.8 mm grande   | YOLO  65.7 mm grande  
+    (1154, 787)  color  60.0 mm mediano  | YOLO  61.2 mm mediano 
+naranja_0094.jpg: color 5 frutas, YOLO 5 frutas
+    ( 840, 277)  color  69.3 mm grande   | YOLO  70.2 mm grande  
+    (1241, 315)  color  62.3 mm mediano  | YOLO  62.8 mm mediano 
+    (1078, 497)  color  53.4 mm chico    | YOLO  54.0 mm chico   
+    ( 827, 660)  color  66.5 mm grande   | YOLO  65.6 mm grande  
+    (1189, 751)  color  59.8 mm mediano  | YOLO  60.7 mm mediano 
+naranja_0095.jpg: color 5 frutas, YOLO 5 frutas
+    ( 840, 277)  color  69.3 mm grande   | YOLO  70.2 mm grande  
+    (1241, 314)  color  62.1 mm mediano  | YOLO  62.8 mm mediano 
+    (1078, 497)  color  53.5 mm chico    | YOLO  54.0 mm chico   
+    ( 830, 658)  color  68.4 mm grande   | YOLO  72.4 mm grande  
+    (1189, 752)  color  60.8 mm mediano  | YOLO  60.8 mm mediano 
+naranja_0096.jpg: color 6 frutas, YOLO 6 frutas
+    ( 858, 270)  color  69.0 mm grande   | YOLO  69.7 mm grande  
+    (1241, 315)  color  62.1 mm mediano  | YOLO  62.7 mm mediano 
+    ( 744, 480)  color  66.4 mm grande   | YOLO  66.5 mm grande  
+    (1078, 497)  color  53.3 mm chico    | YOLO  54.0 mm chico   
+    ( 854, 682)  color  67.3 mm grande   | YOLO  73.9 mm grande  
+    (1189, 753)  color  60.9 mm mediano  | YOLO  61.0 mm mediano 
+naranja_0097.jpg: color 2 frutas, YOLO 2 frutas
+    ( 788, 640)  color  68.6 mm grande   | YOLO  69.7 mm grande  
+    (1153, 639)  color  61.9 mm mediano  | YOLO  62.5 mm mediano 
+naranja_0098.jpg: color 4 frutas, YOLO 4 frutas
+    ( 829, 316)  color  61.6 mm mediano  | YOLO  62.0 mm mediano 
+    (1167, 320)  color  60.7 mm mediano  | YOLO  61.4 mm mediano 
+    ( 788, 640)  color  68.7 mm grande   | YOLO  69.9 mm grande  
+    (1151, 641)  color  64.9 mm mediano  | YOLO  63.0 mm mediano 
+naranja_0099.jpg: color 5 frutas, YOLO 5 frutas
+    ( 983, 292)  color  61.5 mm mediano  | YOLO  62.0 mm mediano 
+    (1180, 319)  color  61.2 mm mediano  | YOLO  65.8 mm grande     <-- distinta categoría
+    ( 777, 346)  color  67.2 mm grande   | YOLO  77.9 mm grande  
+    ( 798, 619)  color  68.4 mm grande   | YOLO  69.3 mm grande  
+    (1153, 638)  color  62.5 mm mediano  | YOLO  62.9 mm mediano 
+naranja_0100.jpg: color 3 frutas, YOLO 3 frutas
+    ( 979, 290)  color  61.6 mm mediano  | YOLO  62.2 mm mediano 
+    (1177, 553)  color  60.6 mm mediano  | YOLO  61.3 mm mediano 
+    ( 790, 679)  color  66.7 mm grande   | YOLO  67.6 mm grande  
+naranja_0101.jpg: color 4 frutas, YOLO 4 frutas
+    ( 978, 290)  color  61.5 mm mediano  | YOLO  62.2 mm mediano 
+    (1177, 553)  color  60.5 mm mediano  | YOLO  61.4 mm mediano 
+    ( 790, 673)  color  66.7 mm grande   | YOLO  67.5 mm grande  
+    (1096, 831)  color  53.0 mm chico    | YOLO  53.7 mm chico   
+naranja_0102.jpg: color 5 frutas, YOLO 5 frutas
+    ( 978, 290)  color  61.5 mm mediano  | YOLO  62.2 mm mediano 
+    ( 725, 389)  color  65.8 mm grande   | YOLO  66.7 mm grande  
+    (1177, 553)  color  60.2 mm mediano  | YOLO  61.3 mm mediano 
+    ( 792, 674)  color  66.9 mm grande   | YOLO  67.8 mm grande  
+    (1096, 831)  color  52.8 mm chico    | YOLO  53.6 mm chico   
+naranja_0103.jpg: color 3 frutas, YOLO 3 frutas
+    ( 978, 290)  color  61.6 mm mediano  | YOLO  62.2 mm mediano 
+    ( 723, 389)  color  66.1 mm grande   | YOLO  67.0 mm grande  
+    ( 802, 656)  color  67.5 mm grande   | YOLO  67.9 mm grande  
+naranja_0104.jpg: color 4 frutas, YOLO 4 frutas
+    ( 978, 290)  color  61.6 mm mediano  | YOLO  62.2 mm mediano 
+    ( 723, 389)  color  66.2 mm grande   | YOLO  67.1 mm grande  
+    ( 804, 655)  color  67.7 mm grande   | YOLO  68.0 mm grande  
+    (1149, 628)  color  53.4 mm chico    | YOLO  53.8 mm chico   
+naranja_0105.jpg: color 4 frutas, YOLO 4 frutas
+    ( 978, 291)  color  61.7 mm mediano  | YOLO  62.2 mm mediano 
+    ( 722, 390)  color  66.2 mm grande   | YOLO  67.2 mm grande  
+    ( 811, 657)  color  70.9 mm grande   | YOLO  67.9 mm grande  
+    (1150, 629)  color  53.4 mm chico    | YOLO  53.9 mm chico   
+naranja_0106.jpg: color 5 frutas, YOLO 5 frutas
+    ( 977, 292)  color  61.7 mm mediano  | YOLO  62.0 mm mediano 
+    (1181, 370)  color  62.8 mm mediano  | YOLO  63.0 mm mediano 
+    ( 722, 390)  color  66.0 mm grande   | YOLO  66.9 mm grande  
+    ( 807, 655)  color  68.2 mm grande   | YOLO  67.6 mm grande  
+    (1151, 627)  color  53.5 mm chico    | YOLO  53.9 mm chico   
+naranja_0107.jpg: color 5 frutas, YOLO 5 frutas
+    ( 982, 291)  color  61.6 mm mediano  | YOLO  62.1 mm mediano 
+    ( 729, 388)  color  65.6 mm grande   | YOLO  66.2 mm grande  
+    (1150, 621)  color  61.6 mm mediano  | YOLO  62.2 mm mediano 
+    ( 853, 802)  color  67.4 mm grande   | YOLO  68.2 mm grande  
+    (1140, 815)  color  54.0 mm chico    | YOLO  53.8 mm chico   
+naranja_0108.jpg: color 6 frutas, YOLO 6 frutas
+    ( 982, 291)  color  61.6 mm mediano  | YOLO  62.0 mm mediano 
+    ( 729, 390)  color  66.6 mm grande   | YOLO  67.0 mm grande  
+    (1150, 621)  color  61.4 mm mediano  | YOLO  62.2 mm mediano 
+    ( 738, 636)  color  65.6 mm grande   | YOLO  66.9 mm grande  
+    ( 894, 811)  color  66.6 mm grande   | YOLO  76.5 mm grande  
+    (1140, 814)  color  54.1 mm chico    | YOLO  53.8 mm chico   
+naranja_0109.jpg: color 4 frutas, YOLO 4 frutas
+    ( 982, 291)  color  61.5 mm mediano  | YOLO  62.2 mm mediano 
+    ( 731, 393)  color  69.3 mm grande   | YOLO  67.2 mm grande  
+    ( 741, 626)  color  67.9 mm grande   | YOLO  67.6 mm grande  
+    (1140, 816)  color  52.9 mm chico    | YOLO  53.3 mm chico   
+naranja_0110.jpg: color 4 frutas, YOLO 4 frutas
+    ( 982, 291)  color  61.5 mm mediano  | YOLO  62.2 mm mediano 
+    (1220, 576)  color  61.1 mm mediano  | YOLO  61.7 mm mediano 
+    ( 738, 629)  color  65.3 mm grande   | YOLO  66.6 mm grande  
+    (1141, 816)  color  53.2 mm chico    | YOLO  53.5 mm chico   
+naranja_0111.jpg: color 4 frutas, YOLO 4 frutas
+    ( 982, 291)  color  61.6 mm mediano  | YOLO  62.0 mm mediano 
+    ( 750, 522)  color  64.4 mm mediano  | YOLO  65.1 mm grande     <-- distinta categoría
+    (1220, 575)  color  60.6 mm mediano  | YOLO  61.5 mm mediano 
+    (1140, 816)  color  53.0 mm chico    | YOLO  53.4 mm chico   
+naranja_0112.jpg: color 5 frutas, YOLO 5 frutas
+    (1207, 270)  color  66.1 mm grande   | YOLO  66.8 mm grande  
+    ( 983, 291)  color  61.3 mm mediano  | YOLO  61.9 mm mediano 
+    ( 754, 529)  color  67.3 mm grande   | YOLO  65.3 mm grande  
+    (1220, 574)  color  61.1 mm mediano  | YOLO  61.5 mm mediano 
+    (1140, 816)  color  53.1 mm chico    | YOLO  53.5 mm chico   
+naranja_0113.jpg: color 6 frutas, YOLO 6 frutas
+    (1207, 271)  color  66.0 mm grande   | YOLO  66.7 mm grande  
+    ( 697, 265)  color  61.5 mm mediano  | YOLO  62.2 mm mediano 
+    ( 983, 291)  color  61.2 mm mediano  | YOLO  61.9 mm mediano 
+    ( 752, 527)  color  65.3 mm grande   | YOLO  65.6 mm grande  
+    (1220, 575)  color  60.7 mm mediano  | YOLO  61.4 mm mediano 
+    (1140, 816)  color  52.8 mm chico    | YOLO  53.4 mm chico   
+naranja_0114.jpg: color 7 frutas, YOLO 7 frutas
+    (1212, 272)  color  66.0 mm grande   | YOLO  66.7 mm grande  
+    ( 696, 265)  color  61.4 mm mediano  | YOLO  62.3 mm mediano 
+    ( 983, 292)  color  61.8 mm mediano  | YOLO  62.5 mm mediano 
+    (1017, 530)  color  72.2 mm grande   | YOLO  68.4 mm grande  
+    ( 751, 525)  color  64.6 mm mediano  | YOLO  65.4 mm grande     <-- distinta categoría
+    (1260, 576)  color  61.4 mm mediano  | YOLO  61.9 mm mediano 
+    (1140, 816)  color  52.9 mm chico    | YOLO  53.3 mm chico   
+naranja_0115.jpg: color 4 frutas, YOLO 4 frutas
+    ( 959, 265)  color  63.6 mm mediano  | YOLO  62.4 mm mediano 
+    (1007, 484)  color  63.8 mm mediano  | YOLO  61.5 mm mediano 
+    ( 732, 562)  color  67.9 mm grande   | YOLO  66.8 mm grande  
+    ( 913, 821)  color  52.9 mm chico    | YOLO  53.8 mm chico   
+naranja_0116.jpg: color 4 frutas, YOLO 4 frutas
+    ( 959, 266)  color  63.8 mm mediano  | YOLO  62.3 mm mediano 
+    (1008, 485)  color  62.4 mm mediano  | YOLO  61.4 mm mediano 
+    ( 733, 562)  color  67.5 mm grande   | YOLO  66.6 mm grande  
+    ( 913, 821)  color  52.9 mm chico    | YOLO  53.7 mm chico   
+
+---- Resumen ----
+Frutas completas detectadas: color 423, YOLO 426
+Frutas comparadas: 423
+Diferencia promedio (YOLO - color): +0.76 mm
+Diferencia absoluta promedio:       1.06 mm
+Misma categoría: 411 de 423
