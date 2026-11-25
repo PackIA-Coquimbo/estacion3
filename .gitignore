@@ -12,3 +12,7 @@ runs/
 # Pesos base que YOLO descarga solo
 yolo26n-seg.pt
 best_anterior.pt
+
+# Generados al usar el programa
+videos/
+registro_frutas.csv

@@ -11,11 +11,15 @@ Módulo de análisis físico del lote de naranjas del proyecto **PackIA Coquimbo
 
 | Estación | Grupo | Función principal | Enfoque de IA |
 |---|---|---|---|
-| **3. Calibre, uniformidad y consistencia** | 3 estudiantes | Evaluar tamaño, llenado, peso y coherencia física | Visión computacional + modelo YOLO entrenado por el equipo |
+| **3. Calibre** | 3 estudiantes | Medir el diámetro de cada naranja que pasa en fila por la cinta y clasificarla por calibre | Visión computacional + modelo YOLO entrenado por el equipo |
 
-**Problema de IA:** determinar si el lote es consistente en cuanto a tamaño, llenado, peso y coherencia general.
+**Problema de IA:** encontrar cada naranja en la imagen de la cinta y medir su diámetro con precisión de milímetros.
 
-**Salida esperada:** clasificar el lote como `consistente`, `irregular`, `subllenado`, `peso inconsistente` o `revisión`, y entregar la evaluación de consistencia a la **Estación 4**.
+**Salida:** para cada naranja, su calibre (`chico`, `mediano`, `grande` o `revision`), enviado **de inmediato por HTTP** a:
+- **Estación 4:** separa la naranja con un servomotor según su calibre.
+- **Estación 5:** dashboard con el total de frutas y cuántas hay de cada calibre.
+
+> El alcance se ajustó: se clasifica **fruta por fruta** en la cinta (ya no el lote completo ni el peso).
 
 ---
 
@@ -23,13 +27,14 @@ Módulo de análisis físico del lote de naranjas del proyecto **PackIA Coquimbo
 
 | # | Actividad | Estado | Notas |
 |---|---|---|---|
-| 1 | Diseñar el módulo de análisis físico del lote | 🔄 En proceso | Detección, medición y calibre por fruta funcionando (Fase 0) y modelo YOLO entrenado (Fase 2) |
-| 2 | Registrar el peso real, simulado o medido (balanza o cámara) | ⏳ Pendiente | Aún no hay lectura ni simulación de peso |
-| 3 | Capturar una imagen de la caja (desde arriba) | ✅ Terminada | Webcam LINK ON fija a 35 cm sobre la superficie negra; tecla `s` guarda fotos |
-| 4 | Definir variables (peso, llenado, nº de frutas, uniformidad, coherencia imagen/peso) | 🔄 En proceso | Ya se mide el **diámetro en mm** y se **cuentan las frutas**; faltan peso, llenado y uniformidad |
-| 5 | Construir tabla de datos con variables físicas e indicadores visuales | ⏳ Pendiente | Hoy los resultados se muestran en pantalla y en la terminal (tecla `m`) |
-| 6 | Clasificar el lote (consistente / irregular / subllenado / peso inconsistente / revisión) | 🔄 En proceso | Por ahora se clasifica **cada fruta** en chico / mediano / grande |
-| 7 | Entregar evaluación de consistencia a la Estación 4 | ⏳ Pendiente | Se enviará por red (MQTT) desde una Raspberry Pi |
+| 0 | Medir y clasificar cada fruta por calibre | ✅ Terminada | Error promedio de 0,8 mm |
+| 1 | Dataset propio de fotos | ✅ Terminada | 117 fotos, etiquetado automático |
+| 2 | Entrenar un modelo YOLO propio | ✅ Terminada | Encuentra las 90 naranjas de validación (mAP50-95 = 0,974) |
+| 3 | Modo cinta: seguir cada fruta en la fila y decidir al cruzar una línea | ✅ Terminada (probado con video simulado) | Falta probar con la cinta real |
+| 4 | Envío por HTTP a las estaciones 4 y 5 | ✅ Terminada (probado con simulador) | Faltan las IP reales del router |
+| 5 | Autocalibración con marcador impreso | ✅ Terminada (probado con video simulado) | Error de 0,1 % en la escala |
+| 6 | Llevar el sistema a la Raspberry Pi | ⏳ Pendiente | Guía en [docs/raspberry_pi.md](docs/raspberry_pi.md) |
+| 7 | Prueba de punta a punta con las estaciones 4 y 5 | ⏳ Pendiente | |
 
 ### Avances técnicos logrados
 
@@ -45,10 +50,14 @@ Módulo de análisis físico del lote de naranjas del proyecto **PackIA Coquimbo
 | Dataset propio: **117 fotos** con etiquetado automático | ✅ Terminada |
 | Entrenamiento de un modelo **YOLO26n-seg** propio (Fase 2) | ✅ Terminada |
 | Comparación detector por color vs YOLO | ✅ Terminada |
-| Ejecución en Raspberry Pi y envío de datos por MQTT | ⏳ Pendiente |
-| Clasificación por peso mediante balanza | ⚠️ Posiblemente descartada |
+| Seguimiento de cada fruta en la cinta y decisión en la línea | ✅ Terminada |
+| Envío del calibre por HTTP (JSON) a las estaciones 4 y 5 | ✅ Terminada |
+| Autocalibración con marcador ArUco | ✅ Terminada |
+| Modelo YOLO exportado a NCNN para Raspberry Pi | ✅ Terminada |
+| Ejecución en Raspberry Pi | ⏳ Pendiente |
+| Clasificación por peso y del lote completo | ❌ Descartada (cambio de alcance) |
 
-> **Leyenda:** ✅ Terminada · 🔄 En proceso · ⏳ Pendiente · ⚠️ Posiblemente descartada
+> **Leyenda:** ✅ Terminada · 🔄 En proceso · ⏳ Pendiente · ❌ Descartada
 
 ---
 
@@ -167,11 +176,84 @@ La principal ventaja de YOLO aparece con **frutas que se tocan**: el detector po
 
 ---
 
+## 🏭 Modo cinta transportadora
+
+[`estacion3_cinta.py`](estacion3_cinta.py) es el programa que funciona en la línea:
+
+1. Las naranjas pasan **en fila** por la cinta (en la imagen, de izquierda a derecha).
+2. El programa **sigue a cada naranja** de una imagen a la siguiente y la **mide en cada imagen** mientras se acerca a la **línea de decisión** (línea amarilla).
+3. Cuando la naranja cruza la línea, calcula su calibre con la **mediana** de todas sus medidas (así una medida mala no cambia el resultado) y lo **envía de inmediato** a las estaciones 4 y 5. Cada naranja se envía **una sola vez**.
+4. Guarda cada naranja en `registro_frutas.csv`.
+
+Si una naranja nunca se vio completa (por ejemplo, venía pegada a otra), se envía como `revision`.
+
+### Comunicación con las estaciones 4 y 5 (HTTP)
+
+Por cada naranja se envía un **POST** con JSON a la ruta `/fruta` de cada estación:
+
+```json
+{"estacion": 3, "id": 15, "calibre": "mediano", "diametro_mm": 61.8, "hora": "2026-11-25 14:08:31"}
+```
+
+| Campo | Valores |
+|---|---|
+| `calibre` | `chico` (< 58,5 mm) · `mediano` (58,5–65 mm) · `grande` (≥ 65 mm) · `revision` |
+| `diametro_mm` | Diámetro medido, o `null` si es `revision` |
+
+El envío se hace en segundo plano, así la cámara nunca se detiene esperando la red. Las direcciones se configuran al inicio de `estacion3_cinta.py` (`URL_ESTACION4`, `URL_ESTACION5`).
+
+[`simulador_estaciones.py`](simulador_estaciones.py) simula ambas estaciones para probar sin ellas, y sirve de **ejemplo para los otros grupos** de cómo recibir los datos.
+
+### Autocalibración
+
+El día de la presentación el sistema funciona solo, sin calibrar con una naranja. Para eso se pega al costado de la cinta un **marcador impreso** ([`marcador_calibracion.pdf`](marcador_calibracion.pdf), un cuadrado ArUco de 60 mm). [`autocalibracion.py`](autocalibracion.py) lo encuentra en la imagen y calcula:
+
+```
+escala (mm por píxel) = 60 mm / lado del marcador en píxeles
+```
+
+Se calibra al partir y se revisa cada cierto tiempo: si la cámara se mueve, se recalibra sola. En una prueba con video simulado, la escala medida tuvo un error de **0,1 %** (≈ 0,06 mm en una naranja de 62 mm).
+
+### Prueba con video simulado
+
+Con [`video_prueba_cinta.mp4`](video_prueba_cinta.mp4) (3 naranjas cruzando la cinta) y el simulador:
+
+| Naranja | Medida | Calibre | Estación 4 (servo) | Estación 5 |
+|---|---|---|---|---|
+| 1 | 54,6 mm | chico | izquierda | total 1 |
+| 2 | 66,3 mm | grande | derecha | total 2 |
+| 3 | 61,9 mm | mediano | centro | total 3 |
+
+Cada naranja se midió ~33 veces antes de la línea y se envió una sola vez.
+
+### Velocidad
+
+Medido con [`medir_velocidad.py`](medir_velocidad.py) en el MacBook (procesador, sin GPU):
+
+| Detector | Imágenes por segundo |
+|---|---|
+| Por color | 32 |
+| YOLO PyTorch | 19 |
+| YOLO NCNN (para Raspberry Pi) | 24 |
+
+En la Raspberry Pi será más lento; la guía [docs/raspberry_pi.md](docs/raspberry_pi.md) explica cómo medirlo allí.
+
+---
+
 ## 📁 Estructura del repositorio
 
 | Archivo | Para qué sirve |
 |---|---|
-| [`clasificador_naranjas.py`](clasificador_naranjas.py) | Programa principal: cámara, detección, medición y calibre |
+| [`estacion3_cinta.py`](estacion3_cinta.py) | **Programa de la línea:** sigue cada naranja en la cinta, la clasifica y la envía a las estaciones 4 y 5 |
+| [`autocalibracion.py`](autocalibracion.py) | Calibración automática con el marcador impreso |
+| [`marcador_calibracion.pdf`](marcador_calibracion.pdf) | Marcador para imprimir a tamaño real |
+| [`simulador_estaciones.py`](simulador_estaciones.py) | Simula las estaciones 4 y 5 (y es ejemplo para ellas) |
+| [`video_prueba_cinta.mp4`](video_prueba_cinta.mp4) | Video simulado para probar sin cinta |
+| [`medir_velocidad.py`](medir_velocidad.py) | Mide cuántas imágenes por segundo procesa cada detector |
+| [`best_ncnn_model/`](best_ncnn_model) | Modelo YOLO optimizado para Raspberry Pi |
+| [`iniciar_estacion3.sh`](iniciar_estacion3.sh) | Inicia la estación (para la Raspberry Pi) |
+| [`docs/raspberry_pi.md`](docs/raspberry_pi.md) | Qué comprar e instalar en la Raspberry Pi |
+| [`clasificador_naranjas.py`](clasificador_naranjas.py) | Detección, medición y calibre; también sirve para calibrar (c), elegir la zona (z) y sacar fotos (s) |
 | [`configuracion.json`](configuracion.json) | Calibración (mm/px) y zona de trabajo guardadas |
 | [`best.pt`](best.pt) | Modelo YOLO entrenado por el equipo |
 | [`generar_dataset.py`](generar_dataset.py) | Crea el dataset etiquetado a partir de `fotos/` |
@@ -195,7 +277,24 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Uso diario
+### Modo cinta (el programa de la línea)
+
+```bash
+source venv/bin/activate
+python3 simulador_estaciones.py                     # terminal 1 (solo si las estaciones 4 y 5 no están)
+python3 estacion3_cinta.py                          # terminal 2: cámara en vivo
+python3 estacion3_cinta.py video_prueba_cinta.mp4   # o probar con un video
+```
+
+| Tecla | Acción |
+|---|---|
+| `g` | Empezar / terminar de grabar video de la cinta (queda en `videos/`) |
+| `r` | Reiniciar los contadores |
+| `q` | Salir |
+
+Para el marcador: `python3 autocalibracion.py` crea el PDF y `python3 autocalibracion.py probar` muestra la escala que mide la cámara.
+
+### Clasificador básico (calibrar, zona y fotos)
 
 ```bash
 source venv/bin/activate
@@ -236,17 +335,21 @@ python3 comparar_yolo.py           # comparar resultados
 | **OpenCV** | Captura de video, segmentación por color, medición |
 | **NumPy** | Manejo de matrices e imágenes |
 | **Ultralytics YOLO26** + **PyTorch** | Entrenamiento y uso del modelo de segmentación |
+| **NCNN** | Versión optimizada del modelo para Raspberry Pi |
+| **OpenCV ArUco** | Marcador de autocalibración |
+| **HTTP (requests / http.server)** | Envío del calibre a las estaciones 4 y 5 |
 | **Webcam LINK ON (USB)** | Captura fija a 35 cm sobre la superficie |
+| **Raspberry Pi** | Computador de la estación en la línea (próximamente) |
 
 ---
 
 ## 🔭 Próximos pasos
 
-- [ ] Más fotos con casos difíciles y reentrenar YOLO.
-- [ ] Llevar el sistema a una **Raspberry Pi** (modelo exportado a NCNN).
-- [ ] Enviar cada medida por **MQTT** a la estación de separación y a un dashboard.
-- [ ] Registrar el peso del lote (balanza, cámara o simulado).
-- [ ] Calcular uniformidad de tamaño y nivel de llenado de la caja.
-- [ ] Generar la tabla de datos (CSV) con las variables físicas.
-- [ ] Clasificar el lote completo (consistente, irregular, subllenado, peso inconsistente, revisión).
-- [ ] Enviar la evaluación a la Estación 4.
+- [x] Seguir cada naranja en la cinta y enviar su calibre por HTTP a las estaciones 4 y 5.
+- [x] Autocalibración con marcador impreso.
+- [x] Registro de cada naranja en CSV.
+- [ ] Grabar un video de la cinta real (tecla `g` en `estacion3_cinta.py`) y ajustar dirección, línea y seguimiento.
+- [ ] Con imágenes de la cinta real, reentrenar YOLO.
+- [ ] Acordar con las estaciones 4 y 5 sus IP, puertos y qué hacer con `revision`.
+- [ ] Instalar y probar en la **Raspberry Pi** ([guía](docs/raspberry_pi.md)).
+- [ ] Prueba de punta a punta con las estaciones 4 y 5.
