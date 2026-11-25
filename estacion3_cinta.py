@@ -42,13 +42,17 @@ import autocalibracion as ac         # calibración automática con el marcador 
 # Cámara (número) o un video grabado de la cinta (ruta al archivo .mp4)
 FUENTE = 0
 
-# Dirección en que avanza la cinta en la imagen: "derecha" (izquierda -> derecha)
-# o "izquierda" (derecha -> izquierda)
-DIRECCION = "derecha"
+# Dirección en que avanzan las naranjas en la imagen:
+#   "abajo"     (de arriba hacia abajo)   -> línea de decisión horizontal
+#   "arriba"    (de abajo hacia arriba)   -> línea de decisión horizontal
+#   "derecha"   (de izquierda a derecha)  -> línea de decisión vertical
+#   "izquierda" (de derecha a izquierda)  -> línea de decisión vertical
+DIRECCION = "abajo"
 
-# Posición de la línea de decisión, como fracción del ancho de la zona
-# (0.5 = al medio). La fruta se mide mientras se acerca y se decide al cruzarla.
-POSICION_LINEA = 0.6
+# Posición de la línea de decisión, como fracción de la zona contada desde
+# arriba (o desde la izquierda): 0 = borde de arriba, 0.5 = al medio, 1 = borde de abajo.
+# La fruta se mide mientras se acerca y se decide al cruzarla.
+POSICION_LINEA = 0.77
 
 # Direcciones de las otras estaciones (cambiarlas por las IP reales del router)
 URL_ESTACION4 = "http://127.0.0.1:5004/fruta"
@@ -101,15 +105,29 @@ def guardar_registro(datos):
 
 
 # ---------------- Seguimiento de frutas ----------------
-def cruzo_la_linea(x_anterior, x_actual, linea):
+def avance(fruta):
+    """Posición de la fruta en el sentido en que se mueve la cinta (x o y)."""
+    return fruta["y"] if DIRECCION in ("abajo", "arriba") else fruta["x"]
+
+
+def calcular_linea():
+    """Posición de la línea de decisión en píxeles (en x o en y, según la dirección)."""
+    if DIRECCION in ("abajo", "arriba"):
+        return int(cn.ZONA_Y1 + POSICION_LINEA * (cn.ZONA_Y2 - cn.ZONA_Y1))
+    return int(cn.ZONA_X1 + POSICION_LINEA * (cn.ZONA_X2 - cn.ZONA_X1))
+
+
+def cruzo_la_linea(anterior, actual, linea):
     """True si el centro de la fruta acaba de pasar la línea de decisión."""
-    if DIRECCION == "derecha":
-        return x_anterior < linea <= x_actual
-    return x_anterior > linea >= x_actual
+    if DIRECCION in ("derecha", "abajo"):
+        return anterior < linea <= actual
+    return anterior > linea >= actual
 
 
-def antes_de_la_linea(x, linea):
-    return x < linea if DIRECCION == "derecha" else x > linea
+def antes_de_la_linea(posicion, linea):
+    if DIRECCION in ("derecha", "abajo"):
+        return posicion <= linea
+    return posicion >= linea
 
 
 def actualizar_seguimiento(seguidas, naranjas, siguiente_id):
@@ -199,21 +217,22 @@ if __name__ == "__main__":
         esquinas_marcador = ac.revisar(frame) if USAR_AUTOCALIBRACION else None
 
         _, naranjas = cn.buscar_naranjas(frame)
-        linea = int(cn.ZONA_X1 + POSICION_LINEA * (cn.ZONA_X2 - cn.ZONA_X1))
+        linea = calcular_linea()
         siguiente_id = actualizar_seguimiento(seguidas, naranjas, siguiente_id)
 
         for fruta in seguidas:
             n = fruta["encontrada"]
             if n is None:
                 continue
-            x_anterior = fruta["x"]
+            anterior = avance(fruta)       # dónde estaba en la imagen anterior
+            actual = avance(n)             # dónde está ahora
 
             # Medir mientras se acerca a la línea (solo si se ve completa)
-            if not fruta["enviada"] and n["completa"] and antes_de_la_linea(n["x"], linea + 1):
+            if not fruta["enviada"] and n["completa"] and antes_de_la_linea(actual, linea):
                 fruta["medidas"].append(cn.diametro_en_mm(n["largo_px"], n["acostada"]))
 
             # ¿Cruzó la línea? -> clasificar y avisar a las estaciones 4 y 5
-            if not fruta["enviada"] and not fruta["nueva"] and cruzo_la_linea(x_anterior, n["x"], linea):
+            if not fruta["enviada"] and not fruta["nueva"] and cruzo_la_linea(anterior, actual, linea):
                 calibre, diametro = decidir(fruta)
                 datos = {
                     "estacion": 3,
@@ -236,9 +255,14 @@ if __name__ == "__main__":
 
         # ---------- Dibujar ----------
         cv2.rectangle(frame, (cn.ZONA_X1, cn.ZONA_Y1), (cn.ZONA_X2, cn.ZONA_Y2), (255, 255, 0), 2)
-        cv2.line(frame, (linea, cn.ZONA_Y1), (linea, cn.ZONA_Y2), (0, 255, 255), 3)
-        cv2.putText(frame, "linea de decision", (linea + 8, cn.ZONA_Y1 + 30),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
+        if DIRECCION in ("abajo", "arriba"):        # línea horizontal
+            cv2.line(frame, (cn.ZONA_X1, linea), (cn.ZONA_X2, linea), (0, 255, 255), 3)
+            cv2.putText(frame, "linea de decision", (cn.ZONA_X1 + 10, linea - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
+        else:                                       # línea vertical
+            cv2.line(frame, (linea, cn.ZONA_Y1), (linea, cn.ZONA_Y2), (0, 255, 255), 3)
+            cv2.putText(frame, "linea de decision", (linea + 8, cn.ZONA_Y1 + 30),
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 255), 2)
 
         for fruta in seguidas:
             n = fruta["encontrada"]

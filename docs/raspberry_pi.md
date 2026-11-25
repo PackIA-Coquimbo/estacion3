@@ -43,7 +43,8 @@ En `estacion3_cinta.py`:
 ```python
 URL_ESTACION4 = "http://IP_DE_LA_ESTACION_4:PUERTO/fruta"
 URL_ESTACION5 = "http://IP_DE_LA_ESTACION_5:PUERTO/fruta"
-DIRECCION = "derecha"        # o "izquierda", según cómo avance la cinta en la imagen
+DIRECCION = "abajo"          # "abajo", "arriba", "derecha" o "izquierda", según cómo avancen las naranjas en la imagen
+POSICION_LINEA = 0.77        # dónde está la línea de decisión (0 = inicio de la zona, 1 = final)
 ```
 
 Para usar YOLO en la Raspberry, en `clasificador_naranjas.py`:

@@ -180,7 +180,7 @@ La principal ventaja de YOLO aparece con **frutas que se tocan**: el detector po
 
 [`estacion3_cinta.py`](estacion3_cinta.py) es el programa que funciona en la línea:
 
-1. Las naranjas pasan **en fila** por la cinta (en la imagen, de izquierda a derecha).
+1. Las naranjas pasan **en fila** por la cinta. En el montaje actual avanzan **de arriba hacia abajo** en la imagen y la línea de decisión es horizontal, a 3/4 de la zona (`DIRECCION = "abajo"`, `POSICION_LINEA = 0.77`). El programa también acepta `"arriba"`, `"derecha"` e `"izquierda"`.
 2. El programa **sigue a cada naranja** de una imagen a la siguiente y la **mide en cada imagen** mientras se acerca a la **línea de decisión** (línea amarilla).
 3. Cuando la naranja cruza la línea, calcula su calibre con la **mediana** de todas sus medidas (así una medida mala no cambia el resultado) y lo **envía de inmediato** a las estaciones 4 y 5. Cada naranja se envía **una sola vez**.
 4. Guarda cada naranja en `registro_frutas.csv`.
@@ -225,6 +225,20 @@ Con [`video_prueba_cinta.mp4`](video_prueba_cinta.mp4) (3 naranjas cruzando la c
 | 3 | 61,9 mm | mediano | centro | total 3 |
 
 Cada naranja se midió ~33 veces antes de la línea y se envió una sola vez.
+
+### Prueba con la cámara real (25 de noviembre)
+
+Video de 1 min 35 s empujando naranjas medianas y grandes de a una por la superficie negra, de arriba hacia abajo:
+
+| Resultado | Valor |
+|---|---|
+| Naranjas que pasaron | 15 |
+| Contadas y enviadas | 15 (cada una **una sola vez**) |
+| En `revision` o falsas detecciones | 0 |
+| Medidas por naranja antes de la línea | 35 a 80 |
+| Velocidad del programa en el Mac | ~18 imágenes por segundo |
+
+Pendiente: repetir con naranjas chicas y con sus diámetros medidos con pie de metro, para calcular el porcentaje de aciertos.
 
 ### Velocidad
 
