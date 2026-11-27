@@ -51,6 +51,8 @@ ZONAS_ESPECIALES = {
     (0, 9): [500, 0, 1450, 990],        # 30 de octubre, primer montaje
     (10, 13): [519, 64, 1431, 1001],    # 6 de noviembre, antes de ajustar la zona
     (14, 26): [565, 132, 1382, 953],
+    (27, 116): [551, 134, 1400, 1007],  # 13 de noviembre (primer entrenamiento)
+    (117, 162): [595, 159, 1446, 1005], # 27 de noviembre, fotos sacadas con la app
 }
 
 

@@ -155,6 +155,18 @@ Las pérdidas (`loss`) bajan y las métricas de validación suben hasta estabili
 
 </details>
 
+### Segundo entrenamiento (27 de noviembre)
+
+Se agregaron 46 fotos sacadas con la app (naranjas chicas, grupos de hasta 10 naranjas y naranjas pegadas en fila). Se revisaron los contornos automáticos y se descartaron 3 fotos mal etiquetadas (dos con naranjas pegadas unidas en un solo contorno y una con la mano tapando la fruta). Dataset: **160 fotos** (130 de entrenamiento y 30 de validación). Entrenado en Google Colab (GPU T4, 100 épocas).
+
+| Prueba | Modelo 13 nov | Modelo 27 nov |
+|---|---|---|
+| 30 fotos de validación (mAP50-95 máscara) | 0,977 | **0,979** |
+| 9 fotos nuevas que ningún modelo vio al entrenar (mAP50-95 máscara) | 0,989 | **0,995** |
+| Foto con 3 naranjas, 2 pegadas (descartada del dataset) | detecta 4 (una falsa) | **detecta 3** ✓ |
+
+El modelo nuevo separa naranjas pegadas que el detector por color une, aunque nunca vio esa foto. El modelo anterior queda como respaldo fuera del repositorio (`best_13nov.pt`).
+
 ---
 
 ## ⚖️ Detector por color vs YOLO
