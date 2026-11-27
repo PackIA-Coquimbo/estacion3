@@ -20,5 +20,4 @@ registro_frutas.csv
 # Herramientas de trabajo
 .superpowers/
 .pytest_cache/
-configuracion_cinta.json
 registro_ejecucion.log

@@ -252,6 +252,25 @@ Video de 1 min 35 s empujando naranjas medianas y grandes de a una por la superf
 
 Pendiente: repetir con naranjas chicas y con sus diámetros medidos con pie de metro, para calcular el porcentaje de aciertos.
 
+### Prueba en la cinta real con YOLO (27 de noviembre)
+
+Dos videos con la cinta transportadora funcionando ([video 1](resultados/videos_cinta/cinta_real_27nov_1.mp4), [video 2](resultados/videos_cinta/cinta_real_27nov_2.mp4), [registro](resultados/registro_cinta_27nov.csv)), detector YOLO del 27 de noviembre, escala 0,3078 mm/px:
+
+![Naranjas al cruzar la línea en la cinta real](docs/img/prueba_cinta_real_27nov.jpg)
+
+| Video | Medida | Calibre | Medidas antes de la línea | Variación entre medidas |
+|---|---|---|---|---|
+| 1 | 62,4 mm | mediano | 93 | ±0,9 mm |
+| 1 | 44,9 mm | chico | 100 | ±0,6 mm |
+| 1 | 70,8 mm | grande | 67 | ±0,4 mm |
+| 2 | 61,8 mm | mediano | 71 | ±0,3 mm |
+| 2 | 69,5 mm | grande | 73 | ±0,4 mm |
+| 2 | 45,3 mm | chico | 81 | ±0,4 mm |
+
+- Las 6 naranjas se detectaron, se midieron y se enviaron **una sola vez cada una**, sin falsas detecciones.
+- Cada naranja se midió entre 67 y 100 veces antes de cruzar la línea: la velocidad de la cinta deja margen de sobra.
+- Pendiente: comparar con el diámetro medido con pie de metro para calcular el error real.
+
 ### Velocidad
 
 Medido con [`medir_velocidad.py`](medir_velocidad.py) en el MacBook (procesador, sin GPU):
