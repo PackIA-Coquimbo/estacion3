@@ -38,9 +38,35 @@ async function api(ruta, datos = {}) {
   }
 }
 
+// ---------- Pausa automática del envío en la pestaña Clasificador ----------
+// Al calibrar se mueven naranjas con la mano: no deben enviarse a las estaciones.
+let pausaAutomatica = false;     // true si la pausa la puso esta pestaña (no el usuario)
+
+async function fijarEnvioSilencioso(activo) {
+  try {
+    await fetch("/api/envio", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ activo }) });
+  } catch (e) { /* sin conexión: el estado lo mostrará */ }
+}
+
+async function pausaPorPestana(nombre) {
+  if (nombre === "clasificador" && !pausaAutomatica) {
+    const envioActivo = estado ? estado.envio_activo : true;
+    if (envioActivo) {
+      pausaAutomatica = true;
+      await fijarEnvioSilencioso(false);
+    }
+  } else if (nombre !== "clasificador" && pausaAutomatica) {
+    pausaAutomatica = false;
+    await fijarEnvioSilencioso(true);
+  }
+  $("aviso-pausa").classList.toggle("oculto", !pausaAutomatica);
+  actualizar();
+}
+
 // ---------- Pestañas ----------
 // Solo la pestaña visible pide video, para no cargar la Raspberry.
 function activarPestana(nombre) {
+  pausaPorPestana(nombre);
   pestanaActiva = nombre;
   document.querySelectorAll(".pestana").forEach((b) => b.classList.toggle("activa", b.dataset.pestana === nombre));
   document.querySelectorAll(".vista").forEach((v) => v.classList.toggle("activa", v.id === nombre));
@@ -134,7 +160,11 @@ document.querySelectorAll(".flecha").forEach((b) =>
 $("btn-grabar").addEventListener("click", () => api("/api/grabar"));
 $("btn-reiniciar").addEventListener("click", () => api("/api/reiniciar"));
 $("btn-urls").addEventListener("click", () => api("/api/urls", { url4: $("url4").value, url5: $("url5").value }));
-$("envio").addEventListener("change", (e) => api("/api/envio", { activo: e.target.checked }));
+$("envio").addEventListener("change", (e) => {
+  pausaAutomatica = false;                 // el usuario decidió: se respeta
+  $("aviso-pausa").classList.add("oculto");
+  api("/api/envio", { activo: e.target.checked });
+});
 
 // ---------- Pestaña Simulador ----------
 $("simulador-activo").addEventListener("change", (e) => api("/api/simulador", { activo: e.target.checked }));
@@ -154,6 +184,14 @@ function mostrarEstado(s) {
   $("chip-fuente").textContent = s.mensaje_fuente;
   $("chip-fuente").classList.toggle("oculto", !s.mensaje_fuente);
   $("envio").checked = s.envio_activo;
+  $("chip-simulador").classList.toggle("oculto", !s.simulador_activo);
+  let problema = "";
+  if (s.imagen_detenida) problema = "Imagen detenida: la cámara o el procesamiento no avanza";
+  else if (s.ultimo_error_motor) problema = `Error al procesar: ${s.ultimo_error_motor}`;
+  else if (s.errores_envio) problema = `Envíos fallidos: ${s.errores_envio}`;
+  $("chip-errores").textContent = problema;
+  $("chip-errores").title = s.ultimo_error || "";
+  $("chip-errores").classList.toggle("oculto", !problema);
 
   // Clasificador: tabla de naranjas
   $("tabla-naranjas").innerHTML = s.naranjas.length

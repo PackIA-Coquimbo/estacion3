@@ -71,6 +71,7 @@ main { padding: 16px 20px; }
 .panel { background: var(--panel); border: 1px solid var(--borde); border-radius: 10px; padding: 16px; }
 .panel h2, .tarjeta h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--naranja-cl); margin: 18px 0 8px; }
 .panel h2:first-child, .tarjeta h2:first-child { margin-top: 0; }
+.nota-pausa { margin: 0 0 14px; padding: 10px 12px; border-radius: 8px; background: #3a2f14; border: 1px solid #5e5223; color: var(--amarillo); font-size: 13px; line-height: 1.4; }
 .nota { color: var(--tenue); font-size: 13px; margin: 4px 0 10px; line-height: 1.4; }
 .fila { display: flex; gap: 8px; }
 .fila .boton { flex: 1; }

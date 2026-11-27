@@ -69,7 +69,9 @@ class Motor:
         self.naranjas = []                   # naranjas detectadas en la última imagen
         self.esquinas_marcador = None
         self.tiempos = []                    # momentos de las últimas imágenes (para img/s)
-        self.grabador = None
+        self.grabador = None                 # cv2.VideoWriter (solo lo toca el hilo de la cámara)
+        self.quiere_grabar = False           # lo que pidió el botón Grabar / Detener
+        self.ultimo_error_motor = ""         # último error al procesar una imagen
         self.errores_envio = 0
         self.ultimo_error = ""
         self.mensaje_fuente = ""             # aviso si la cámara no abre, etc.
@@ -127,6 +129,7 @@ class Motor:
     # ---------------- Procesar una imagen ----------------
     def procesar(self, frame):
         """Se llama con cada imagen de la cámara o del video."""
+        self._actualizar_grabacion(frame)
         if self.grabador is not None:
             self.grabador.write(frame)
         esquinas = ac.revisar(frame) if self.usar_autocalibracion else None
@@ -260,6 +263,10 @@ class Motor:
             tiempos = list(self.tiempos)
             alto, ancho = (cn.ALTO, cn.ANCHO) if self.imagen is None else self.imagen.shape[:2]
         fps = (len(tiempos) - 1) / (tiempos[-1] - tiempos[0]) if len(tiempos) > 1 and tiempos[-1] > tiempos[0] else 0.0
+        # Si no llega una imagen nueva hace más de 2 s, la cámara o el procesamiento se detuvo
+        imagen_detenida = bool(tiempos) and time.time() - tiempos[-1] > 2.0
+        if imagen_detenida:
+            fps = 0.0
         lista = []
         for i, n in enumerate(naranjas, start=1):
             mm = round(cn.diametro_en_mm(n["largo_px"], n["acostada"]), 1)
@@ -279,7 +286,9 @@ class Motor:
             "conteo": conteo,
             "ultimas": list(self.ultimas),
             "naranjas": lista,
-            "grabando": self.grabador is not None,
+            "grabando": self.quiere_grabar,
+            "imagen_detenida": imagen_detenida,
+            "ultimo_error_motor": self.ultimo_error_motor,
             "simulador_activo": self.simulador_activo,
             "url_estacion4": self.url_estacion4,
             "url_estacion5": self.url_estacion5,
@@ -292,9 +301,13 @@ class Motor:
 
     # ---------------- Acciones (botones de la página) ----------------
     def _reiniciar_seguimiento(self):
-        """Al cambiar zona, línea o dirección, se olvidan las frutas que se estaban siguiendo."""
+        """
+        Al cambiar zona, línea o dirección, se olvidan las frutas que se estaban
+        siguiendo, MENOS las que ya se enviaron: si no, al mover la línea más
+        adelante una fruta ya enviada volvería a cruzarla y se enviaría dos veces.
+        """
         with self.candado:
-            self.seguidas = []
+            self.seguidas = [f for f in self.seguidas if f["enviada"]]
 
     def calibrar(self):
         """Calibra con la naranja mediana: debe haber UNA sola naranja completa en la zona."""
@@ -306,11 +319,15 @@ class Motor:
                            f"Deja SOLO la mediana ({cn.DIAMETRO_REFERENCIA_MM:.0f} mm), sin tocar el borde.")
         if completas[0]["circularidad"] < cn.CIRCULARIDAD_CALIBRACION:
             return False, "Parece que hay más de una fruta pegada. Separa la mediana de todo."
-        antes = cn.ESCALA_FONDO
-        cn.calibrar(naranjas)               # solo cambia la escala si el resultado es razonable
-        if cn.ESCALA_FONDO == antes:
+        # Misma cuenta que cn.calibrar, para saber de antemano si la escala es razonable
+        H = cn.ALTURA_CAMARA_MM
+        d_plano = cn.DIAMETRO_REFERENCIA_MM * H / (H - cn.ALTO_REFERENCIA_MM / 2)
+        escala = d_plano / completas[0]["largo_px"]
+        if not cn.ESCALA_MINIMA <= escala <= cn.ESCALA_MAXIMA:
             return False, "La escala resultante no es razonable. Revisa que solo esté la mediana."
-        return True, f"Calibrado: {cn.ESCALA_FONDO:.4f} mm por píxel"
+        cn.calibrar(naranjas)
+        aviso = " (el marcador, si se ve, puede volver a ajustarla)" if self.usar_autocalibracion else ""
+        return True, f"Calibrado: {cn.ESCALA_FONDO:.4f} mm por píxel{aviso}"
 
     def fijar_zona(self, x1, y1, x2, y2):
         x1, x2 = sorted((int(x1), int(x2)))
@@ -366,6 +383,7 @@ class Motor:
             self.seguidas = []
             self.errores_envio = 0
             self.ultimo_error = ""
+            self.ultimo_error_motor = ""
 
     def guardar_foto(self):
         with self.candado:
@@ -383,20 +401,36 @@ class Motor:
         return ruta
 
     def alternar_grabacion(self):
-        """Empieza o termina de grabar. Devuelve True si quedó grabando."""
+        """
+        Pide empezar o terminar de grabar. Devuelve True si quedará grabando.
+        El archivo lo abre y lo cierra el hilo de la cámara en la imagen siguiente:
+        cerrarlo desde la página mientras la cámara escribe puede cerrar la app.
+        """
+        self.quiere_grabar = not self.quiere_grabar
+        return self.quiere_grabar
+
+    def _actualizar_grabacion(self, frame):
+        """(Hilo de la cámara) Abre o cierra el archivo de video según lo pedido."""
+        if self.quiere_grabar and self.grabador is None:
+            with self.candado:
+                tiempos = list(self.tiempos)
+            fps = (len(tiempos) - 1) / (tiempos[-1] - tiempos[0]) if len(tiempos) > 1 and tiempos[-1] > tiempos[0] else 10.0
+            carpeta = self._ruta(ec.CARPETA_VIDEOS)
+            os.makedirs(carpeta, exist_ok=True)
+            ruta = os.path.join(carpeta, datetime.now().strftime("cinta_%Y%m%d_%H%M%S.mp4"))
+            alto, ancho = frame.shape[:2]
+            grabador = cv2.VideoWriter(ruta, cv2.VideoWriter_fourcc(*"mp4v"), max(1.0, fps), (ancho, alto))
+            if grabador.isOpened():
+                self.grabador = grabador
+            else:
+                self.quiere_grabar = False
+                self.ultimo_error_motor = f"No se pudo crear el video {ruta}"
+        elif not self.quiere_grabar and self.grabador is not None:
+            self.grabador.release()
+            self.grabador = None
+
+    def cerrar(self):
+        """Al salir de la app: cierra el video si se estaba grabando (para que se pueda abrir)."""
         if self.grabador is not None:
             self.grabador.release()
             self.grabador = None
-            return False
-        with self.candado:
-            imagen = self.imagen
-            tiempos = list(self.tiempos)
-        if imagen is None:
-            return False
-        fps = (len(tiempos) - 1) / (tiempos[-1] - tiempos[0]) if len(tiempos) > 1 and tiempos[-1] > tiempos[0] else 10.0
-        carpeta = self._ruta(ec.CARPETA_VIDEOS)
-        os.makedirs(carpeta, exist_ok=True)
-        ruta = os.path.join(carpeta, datetime.now().strftime("cinta_%Y%m%d_%H%M%S.mp4"))
-        alto, ancho = imagen.shape[:2]
-        self.grabador = cv2.VideoWriter(ruta, cv2.VideoWriter_fourcc(*"mp4v"), max(1.0, fps), (ancho, alto))
-        return True

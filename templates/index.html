@@ -14,6 +14,8 @@
       <span id="chip-calibracion" class="chip">—</span>
       <span id="chip-fps" class="chip">0 img/s</span>
       <span id="chip-fuente" class="chip chip-alerta oculto"></span>
+      <span id="chip-errores" class="chip mal oculto"></span>
+      <span id="chip-simulador" class="chip medio oculto" title="Las naranjas NO llegan a las estaciones reales">Simulador encendido</span>
       <label class="interruptor" title="Si está en pausa, la línea sigue funcionando pero no se envía ni se cuenta">
         <input type="checkbox" id="envio" checked>
         <span class="riel"></span><span class="texto">Envío a estaciones</span>
@@ -37,6 +39,7 @@
         <div id="ayuda-zona" class="ayuda oculto">Arrastra sobre la superficie negra para marcar la zona</div>
       </div>
       <aside class="panel">
+        <p id="aviso-pausa" class="nota-pausa oculto">⏸ Envío a las estaciones en pausa mientras estás en esta pestaña, para que las naranjas que muevas al calibrar no se envíen. Se reactiva al volver a <b>Estación cinta</b>.</p>
         <h2>Calibración</h2>
         <p class="nota">Deja <b>solo la naranja mediana (62 mm)</b> dentro de la zona y presiona calibrar.</p>
         <button id="btn-calibrar" class="boton principal">Calibrar con la mediana</button>

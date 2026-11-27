@@ -13,10 +13,13 @@ Luego abrir en el navegador:  http://localhost:8000
 (o desde otro computador del router: http://IP_DE_ESTE_EQUIPO:8000)
 """
 
+import atexit
+import logging
 import socket
 import sys
 import threading
 import time
+import traceback
 
 import cv2
 from flask import Flask, Response, abort, jsonify, render_template, request
@@ -55,7 +58,12 @@ def iniciar_camara(motor, fuente):
                 ok, frame = cap.read()
                 if not ok:
                     break                       # fin del video (se repite) o cámara desconectada
-                motor.procesar(frame)
+                try:
+                    motor.procesar(frame)
+                except Exception as e:          # un error en una imagen no debe detener la estación
+                    motor.ultimo_error_motor = f"{type(e).__name__}: {e}"
+                    traceback.print_exc()
+                    time.sleep(0.5)
                 if espera:                      # un video se reproduce a su velocidad real
                     time.sleep(max(0, espera - (time.time() - inicio)))
             cap.release()
@@ -72,6 +80,9 @@ def iniciar_camara(motor, fuente):
 def crear_app(motor):
     app = Flask(__name__)
     app.register_blueprint(simulador)
+    # No anotar cada petición en la terminal (la página pide el estado 3 veces por
+    # segundo; en la Raspberry eso llenaría la tarjeta microSD con el registro).
+    logging.getLogger("werkzeug").setLevel(logging.WARNING)
 
     def leer_json(*campos):
         """Datos JSON del botón; si falta algún campo responde 400."""
@@ -190,6 +201,7 @@ if __name__ == "__main__":
         fuente = int(sys.argv[1]) if sys.argv[1].isdigit() else sys.argv[1]
 
     motor = Motor()
+    atexit.register(motor.cerrar)       # si se cierra mientras graba, el video queda bien guardado
     iniciar_camara(motor, fuente)
     print(f"Abre en el navegador:  http://localhost:{PUERTO}")
     print(f"Desde otro computador: http://{ip_local()}:{PUERTO}")
