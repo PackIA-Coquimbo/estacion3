@@ -258,6 +258,9 @@ En la Raspberry Pi será más lento; la guía [docs/raspberry_pi.md](docs/raspbe
 
 | Archivo | Para qué sirve |
 |---|---|
+| [`app_estacion3.py`](app_estacion3.py) | **App con las 3 pestañas** (Clasificador, Estación cinta, Simulador) en el navegador |
+| [`motor_estacion3.py`](motor_estacion3.py), [`simulador_web.py`](simulador_web.py), [`templates/`](templates), [`static/`](static) | Partes de la app: procesamiento, simulador y página |
+| [`tests/`](tests) | Pruebas automáticas (`python3 -m pytest`) |
 | [`estacion3_cinta.py`](estacion3_cinta.py) | **Programa de la línea:** sigue cada naranja en la cinta, la clasifica y la envía a las estaciones 4 y 5 |
 | [`autocalibracion.py`](autocalibracion.py) | Calibración automática con el marcador impreso |
 | [`marcador_calibracion.pdf`](marcador_calibracion.pdf) | Marcador para imprimir a tamaño real |
@@ -290,6 +293,31 @@ python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
+
+### ⭐ App de la Estación 3 (todo en una ventana)
+
+```bash
+source venv/bin/activate
+python3 app_estacion3.py                          # con la cámara
+python3 app_estacion3.py video_prueba_cinta.mp4   # o probar con un video
+```
+
+Luego abrir **http://localhost:8000** en el navegador (o, desde otro computador del mismo router, `http://IP_DEL_EQUIPO:8000`; la IP aparece en la terminal al iniciar).
+
+![App de la Estación 3](docs/img/app_estacion3.png)
+
+| Pestaña | Qué se hace ahí |
+|---|---|
+| **Clasificador** | Calibrar con la naranja mediana, elegir la zona arrastrando el mouse sobre la imagen, guardar fotos, ver la máscara y las medidas de cada naranja |
+| **Estación cinta** | Mover la línea de decisión con un clic, elegir la dirección de la cinta (↑ ↓ ← →), grabar video, reiniciar contadores, ver las últimas naranjas y configurar las direcciones de las estaciones 4 y 5 |
+| **Simulador** | Encender o apagar las estaciones 4 y 5 simuladas y ver lo que recibe cada una |
+
+- La cámara se abre una sola vez y la clasificación sigue funcionando aunque la página esté cerrada.
+- El interruptor **Envío a estaciones** (arriba a la derecha) pausa el envío: útil para calibrar sin mandar naranjas por error.
+- Los ajustes (zona, calibración, línea, dirección, direcciones) se guardan solos.
+- Pruebas automáticas: `python3 -m pytest`.
+
+Los programas anteriores siguen funcionando por separado:
 
 ### Modo cinta (el programa de la línea)
 

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estación 3 · PackIA</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+  <!-- ===== Encabezado ===== -->
+  <header class="encabezado">
+    <div class="marca"><span class="punto"></span>Estación 3 <small>PackIA Coquimbo · Calibre</small></div>
+    <div class="chips">
+      <span id="chip-calibracion" class="chip">—</span>
+      <span id="chip-fps" class="chip">0 img/s</span>
+      <span id="chip-fuente" class="chip chip-alerta oculto"></span>
+      <span id="chip-errores" class="chip mal oculto"></span>
+      <span id="chip-simulador" class="chip medio oculto" title="Las naranjas NO llegan a las estaciones reales">Simulador encendido</span>
+      <label class="interruptor" title="Si está en pausa, la línea sigue funcionando pero no se envía ni se cuenta">
+        <input type="checkbox" id="envio" checked>
+        <span class="riel"></span><span class="texto">Envío a estaciones</span>
+      </label>
+    </div>
+  </header>
+
+  <!-- ===== Pestañas ===== -->
+  <nav class="pestanas">
+    <button class="pestana" data-pestana="clasificador">Clasificador</button>
+    <button class="pestana" data-pestana="cinta">Estación cinta</button>
+    <button class="pestana" data-pestana="simulador">Simulador</button>
+  </nav>
+
+  <main>
+    <!-- ===== 1. Clasificador ===== -->
+    <section id="clasificador" class="vista">
+      <div class="lienzo">
+        <img id="img-clasificador" alt="Cámara">
+        <canvas id="canvas-clasificador"></canvas>
+        <div id="ayuda-zona" class="ayuda oculto">Arrastra sobre la superficie negra para marcar la zona</div>
+      </div>
+      <aside class="panel">
+        <p id="aviso-pausa" class="nota-pausa oculto">⏸ Envío a las estaciones en pausa mientras estás en esta pestaña, para que las naranjas que muevas al calibrar no se envíen. Se reactiva al volver a <b>Estación cinta</b>.</p>
+        <h2>Calibración</h2>
+        <p class="nota">Deja <b>solo la naranja mediana (62 mm)</b> dentro de la zona y presiona calibrar.</p>
+        <button id="btn-calibrar" class="boton principal">Calibrar con la mediana</button>
+        <h2>Zona de trabajo</h2>
+        <button id="btn-zona" class="boton">Elegir zona</button>
+        <h2>Imagen</h2>
+        <div class="fila">
+          <button id="btn-foto" class="boton">Guardar foto</button>
+          <button id="btn-mascara" class="boton">Ver máscara</button>
+        </div>
+        <h2>Naranjas en la imagen</h2>
+        <table class="tabla">
+          <thead><tr><th>#</th><th>Diámetro</th><th>Calibre</th></tr></thead>
+          <tbody id="tabla-naranjas"><tr><td colspan="3" class="vacio">Sin naranjas</td></tr></tbody>
+        </table>
+      </aside>
+    </section>
+
+    <!-- ===== 2. Estación cinta ===== -->
+    <section id="cinta" class="vista">
+      <div class="lienzo">
+        <img id="img-cinta" alt="Cinta">
+        <canvas id="canvas-cinta"></canvas>
+        <div class="ayuda">Haz clic en la imagen para mover la línea de decisión</div>
+      </div>
+      <aside class="panel">
+        <div class="total"><span id="cont-total">0</span><small>naranjas</small></div>
+        <div class="contadores">
+          <div class="contador chico"><b id="cont-chico">0</b>Chicas</div>
+          <div class="contador mediano"><b id="cont-mediano">0</b>Medianas</div>
+          <div class="contador grande"><b id="cont-grande">0</b>Grandes</div>
+          <div class="contador revision"><b id="cont-revision">0</b>Revisión</div>
+        </div>
+        <h2>Dirección de la cinta</h2>
+        <div class="flechas">
+          <button class="boton flecha" data-direccion="arriba" title="De abajo hacia arriba">↑</button>
+          <button class="boton flecha" data-direccion="abajo" title="De arriba hacia abajo">↓</button>
+          <button class="boton flecha" data-direccion="izquierda" title="De derecha a izquierda">←</button>
+          <button class="boton flecha" data-direccion="derecha" title="De izquierda a derecha">→</button>
+        </div>
+        <div class="fila">
+          <button id="btn-grabar" class="boton"><span class="rec"></span>Grabar</button>
+          <button id="btn-reiniciar" class="boton">Reiniciar</button>
+        </div>
+        <h2>Últimas naranjas</h2>
+        <ul id="lista-ultimas" class="lista"><li class="vacio">Todavía no pasa ninguna</li></ul>
+        <details class="ajustes">
+          <summary>Estaciones 4 y 5</summary>
+          <label>Estación 4 <input id="url4" type="text"></label>
+          <label>Estación 5 <input id="url5" type="text"></label>
+          <button id="btn-urls" class="boton">Guardar direcciones</button>
+          <p id="errores-envio" class="nota"></p>
+        </details>
+      </aside>
+    </section>
+
+    <!-- ===== 3. Simulador ===== -->
+    <section id="simulador" class="vista">
+      <div class="simulador">
+        <div class="tarjeta ancha">
+          <label class="interruptor grande">
+            <input type="checkbox" id="simulador-activo">
+            <span class="riel"></span><span class="texto">Simular estaciones 4 y 5</span>
+          </label>
+          <p class="nota" id="destino-envio"></p>
+        </div>
+        <div class="tarjeta">
+          <h2>Estación 4 · Separación</h2>
+          <div class="servo"><span>Servo</span><b id="sim-servo">-</b></div>
+          <p class="nota">Recibidas: <b id="sim-recibidas">0</b></p>
+          <p class="nota" id="sim-ultima">Última: -</p>
+        </div>
+        <div class="tarjeta">
+          <h2>Estación 5 · Dashboard</h2>
+          <div class="contadores">
+            <div class="contador"><b id="sim-total">0</b>Total</div>
+            <div class="contador chico"><b id="sim-chico">0</b>Chicas</div>
+            <div class="contador mediano"><b id="sim-mediano">0</b>Medianas</div>
+            <div class="contador grande"><b id="sim-grande">0</b>Grandes</div>
+          </div>
+        </div>
+        <div class="tarjeta ancha">
+          <h2>Registro</h2>
+          <ul id="sim-registro" class="lista registro"><li class="vacio">Sin mensajes</li></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="aviso" class="aviso"></div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
