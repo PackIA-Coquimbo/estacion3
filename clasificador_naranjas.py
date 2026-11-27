@@ -116,7 +116,7 @@ ARCHIVO_CONFIG = "configuracion.json"
 # ---------------- Detector con IA (Fase 2) ----------------
 # False = detector por color (OpenCV).  True = modelo YOLO entrenado en Colab.
 # Para usar YOLO: pip install ultralytics  y copiar best.pt a esta carpeta.
-USAR_YOLO = False
+USAR_YOLO = True
 MODELO_YOLO = "best.pt"
 CONFIANZA_YOLO = 0.7     # probabilidad mínima para aceptar una detección (las naranjas dan 0,97 o más)
 modelo_yolo = None       # se carga la primera vez que se usa
