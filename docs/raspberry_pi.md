@@ -36,9 +36,20 @@ chmod +x iniciar_estacion3.sh
 
 La instalación puede tardar 15 a 30 minutos (descarga PyTorch).
 
+Para abrir la app con las 3 pestañas:
+
+```bash
+source venv/bin/activate
+python3 app_estacion3.py
+```
+
+y en el navegador de la Raspberry: **http://localhost:8000**. Desde el notebook conectado al proyector, en el mismo router: `http://IP_DE_LA_RASPBERRY:8000`.
+
 ## 4. Configurar
 
-En `estacion3_cinta.py`:
+**Con la app** (recomendado): la zona se dibuja en la pestaña *Clasificador* (botón "Elegir zona"); la línea, la dirección y las direcciones de las estaciones 4 y 5 se ajustan en la pestaña *Estación cinta*. Todo queda guardado.
+
+**Sin la app**, en `estacion3_cinta.py`:
 
 ```python
 URL_ESTACION4 = "http://IP_DE_LA_ESTACION_4:PUERTO/fruta"
@@ -77,7 +88,7 @@ Name=Estacion 3
 Exec=/home/USUARIO/estacion3/iniciar_estacion3.sh
 ```
 
-(cambiar `USUARIO` por el usuario de la Raspberry). Al reiniciar, la ventana del programa debería abrirse sola. Esto depende de la versión de Raspberry Pi OS, así que hay que comprobarlo con la Raspberry.
+(cambiar `USUARIO` por el usuario de la Raspberry). `iniciar_estacion3.sh` abre la app; después basta abrir `http://localhost:8000` en el navegador. Al reiniciar, la app debería quedar funcionando sola. Esto depende de la versión de Raspberry Pi OS, así que hay que comprobarlo con la Raspberry.
 
 ## 7. Revisar la velocidad
 
